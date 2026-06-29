@@ -36,8 +36,12 @@ for (const page of pages) {
   for (const pattern of [
     /<title>[^<]+<\/title>/,
     /<meta name="description" content="[^"]+"/,
+    /<meta name="google-site-verification" content="IKltP1oUj7Y3BJdkTE2-DUNCvV29QHhHrTNKxxtqPhs"/,
     /<h1>[^<]+<\/h1>/,
     /<link rel="canonical" href="https:\/\/john1912-7\.github\.io\/open-free-tools\//,
+    /https:\/\/www\.googletagmanager\.com\/gtag\/js\?id=G-EFDCRJY776/,
+    /gtag\("config", "G-EFDCRJY776"\)/,
+    /<script type="application\/ld\+json">/,
   ]) {
     if (!pattern.test(html)) failures.push(`${file}: failed ${pattern}`);
   }
@@ -52,6 +56,10 @@ for (const lang of languages) {
   if (!sitemap.includes(`/open-free-tools/${lang}/`)) {
     failures.push(`sitemap.xml: missing ${lang}`);
   }
+}
+
+for (const pattern of [/<lastmod>\d{4}-\d{2}-\d{2}<\/lastmod>/, /<changefreq>/, /<priority>/]) {
+  if (!pattern.test(sitemap)) failures.push(`sitemap.xml: failed ${pattern}`);
 }
 
 if (failures.length) {

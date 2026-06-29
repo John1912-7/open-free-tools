@@ -6,6 +6,8 @@ const site = {
   baseUrl: "https://john1912-7.github.io/open-free-tools",
   midiUrl: "https://john1912-7.github.io/midi-piano-trainer/",
   githubUrl: "https://github.com/john1912-7",
+  analyticsId: "G-EFDCRJY776",
+  googleSiteVerification: "IKltP1oUj7Y3BJdkTE2-DUNCvV29QHhHrTNKxxtqPhs",
 };
 
 const languages = {
@@ -521,6 +523,9 @@ function renderPage(route, lang, path) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="index, follow" />
+    <meta name="google-site-verification" content="${site.googleSiteVerification}" />
+    <meta name="application-name" content="${site.name}" />
+    <meta name="theme-color" content="#087f68" />
     <title>${escapeHtml(page.title)}</title>
     <meta name="description" content="${escapeHtml(page.description)}" />
     <link rel="canonical" href="${url}" />
@@ -534,6 +539,13 @@ ${alternateLinks(route)}
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="${escapeHtml(page.title)}" />
     <meta name="twitter:description" content="${escapeHtml(page.description)}" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=${site.analyticsId}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag("js", new Date());
+      gtag("config", "${site.analyticsId}");
+    </script>
     <script>
       (() => {
         const saved = localStorage.getItem("oft-theme");
@@ -542,6 +554,7 @@ ${alternateLinks(route)}
       })();
     </script>
     <link rel="stylesheet" href="${cssPath}" />
+    ${jsonLdScript(buildStructuredData(route, data, page, url))}
   </head>
   <body>
     <header class="site-header">
@@ -987,10 +1000,128 @@ function alternateLinks(route) {
   return lines.join("\n");
 }
 
+function buildStructuredData(route, data, page, url) {
+  const organization = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: site.name,
+    url: site.baseUrl,
+    sameAs: [site.githubUrl],
+  };
+
+  const website = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: site.name,
+    url: site.baseUrl,
+    inLanguage: languageCodes,
+    description: page.description,
+  };
+
+  const breadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: site.name,
+        item: `${site.baseUrl}/`,
+      },
+    ],
+  };
+
+  if (route !== "home") {
+    breadcrumb.itemListElement.push({
+      "@type": "ListItem",
+      position: 2,
+      name: page.h1,
+      item: url,
+    });
+  }
+
+  if (route === "tools" || route === "home") {
+    return [
+      organization,
+      website,
+      breadcrumb,
+      {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        name: data.pages.tools.h1,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "MIDI Piano Trainer",
+            url: `${site.baseUrl}/tools/midi-piano-trainer/`,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Audio to MIDI Converter",
+            url: `${site.baseUrl}/tools/audio-to-midi/`,
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: "Open Transcription Studio",
+            url: `${site.baseUrl}/tools/open-transcription-studio/`,
+          },
+        ],
+      },
+    ];
+  }
+
+  if (["midi", "audio", "transcription"].includes(route)) {
+    return [
+      organization,
+      breadcrumb,
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        name: page.h1,
+        applicationCategory: route === "transcription" ? "MultimediaApplication" : "MusicApplication",
+        operatingSystem: "Web",
+        url,
+        description: page.description,
+        offers: {
+          "@type": "Offer",
+          price: "0",
+          priceCurrency: "USD",
+        },
+        isAccessibleForFree: true,
+      },
+    ];
+  }
+
+  return [organization, website, breadcrumb];
+}
+
+function jsonLdScript(data) {
+  return `<script type="application/ld+json">${JSON.stringify(data).replace(/</g, "\\u003c")}</script>`;
+}
+
+function sitemapMeta(path) {
+  const normalized = path.replaceAll("\\", "/");
+  if (!normalized) return { changefreq: "weekly", priority: "1.0" };
+  if (normalized.endsWith("tools")) return { changefreq: "weekly", priority: "0.9" };
+  if (normalized.includes("/tools/") || normalized.startsWith("tools/")) return { changefreq: "weekly", priority: "0.8" };
+  if (normalized.endsWith("blog")) return { changefreq: "weekly", priority: "0.7" };
+  return { changefreq: "monthly", priority: "0.6" };
+}
+
 function buildSitemap() {
-  const urls = generatedPaths.map((path) => `  <url>
+  const lastmod = new Date().toISOString().slice(0, 10);
+  const urls = generatedPaths.map((path) => {
+    const meta = sitemapMeta(path);
+    return `  <url>
     <loc>${canonical(path)}</loc>
-  </url>`).join("\n");
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>${meta.changefreq}</changefreq>
+    <priority>${meta.priority}</priority>
+  </url>`;
+  }).join("\n");
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls}
