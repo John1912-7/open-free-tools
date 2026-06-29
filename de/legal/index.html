@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+    <title>Rechtlicher Hinweis - Open Free Tools</title>
+    <meta name="description" content="Open Free Tools ist unabhaengig und nicht mit erwaehnten kostenpflichtigen Diensten verbunden." />
+    <link rel="canonical" href="https://john1912-7.github.io/open-free-tools/de/legal/" />
+    <link rel="alternate" hreflang="x-default" href="https://john1912-7.github.io/open-free-tools/legal/" />
+    <link rel="alternate" hreflang="en" href="https://john1912-7.github.io/open-free-tools/en/legal/" />
+    <link rel="alternate" hreflang="ru" href="https://john1912-7.github.io/open-free-tools/ru/legal/" />
+    <link rel="alternate" hreflang="de" href="https://john1912-7.github.io/open-free-tools/de/legal/" />
+    <link rel="alternate" hreflang="es" href="https://john1912-7.github.io/open-free-tools/es/legal/" />
+    <link rel="alternate" hreflang="hy" href="https://john1912-7.github.io/open-free-tools/hy/legal/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="de" />
+    <meta property="og:title" content="Rechtlicher Hinweis - Open Free Tools" />
+    <meta property="og:description" content="Open Free Tools ist unabhaengig und nicht mit erwaehnten kostenpflichtigen Diensten verbunden." />
+    <meta property="og:url" content="https://john1912-7.github.io/open-free-tools/de/legal/" />
+    <meta property="og:site_name" content="Open Free Tools" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Rechtlicher Hinweis - Open Free Tools" />
+    <meta name="twitter:description" content="Open Free Tools ist unabhaengig und nicht mit erwaehnten kostenpflichtigen Diensten verbunden." />
+    <script>
+      (() => {
+        const saved = localStorage.getItem("oft-theme");
+        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.dataset.theme = saved || (prefersDark ? "dark" : "light");
+      })();
+    </script>
+    <link rel="stylesheet" href="../../assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../../de/">
+        <span>OFT</span>
+        <strong>Open Free Tools</strong>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="../../de/tools/">Tools</a>
+        <a href="../../de/about/">Projekt</a>
+        <a href="../../de/blog/">Blog</a>
+        <a href="../../de/donate/">Spenden</a>
+        <a href="../../de/contribute/">Mitmachen</a>
+        <a href="../../de/legal/">Rechtliches</a>
+        <a href="../../de/contact/">Kontakt</a>
+      </nav>
+      <div class="header-controls">
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle dark or light theme">
+          <span data-theme-icon>◐</span>
+        </button>
+        <details class="language-menu">
+          <summary aria-label="Change language">
+            <span class="flag">🇩🇪</span>
+            <span class="chevron" aria-hidden="true">▾</span>
+          </summary>
+          <div class="language-list" aria-label="Languages">
+          <a href="../../en/legal/"><span class="flag">🇬🇧</span><span>English</span></a>
+          <a href="../../ru/legal/"><span class="flag">🇷🇺</span><span>Русский</span></a>
+          <a href="../../de/legal/" aria-current="true"><span class="flag">🇩🇪</span><span>Deutsch</span></a>
+          <a href="../../es/legal/"><span class="flag">🇪🇸</span><span>Español</span></a>
+          <a href="../../hy/legal/"><span class="flag">🇦🇲</span><span>Հայերեն</span></a>
+          </div>
+        </details>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Free · Open Source · Browser First</p>
+          <h1>Rechtlicher Hinweis</h1>
+          <p>Das Projekt baut unabhaengige Alternativen und kopiert keine Marken, Logos, privaten APIs oder Interfaces.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="https://john1912-7.github.io/midi-piano-trainer/">Tool oeffnen</a>
+            <a class="button" href="https://github.com/john1912-7">Auf GitHub merken</a>
+          </div>
+        </div>
+        
+      </section>
+
+
+      <section class="panel">
+        <h2>Project rules</h2>
+        <p>Core features stay free and open-source. The project does not copy paid services’ brands, logos, UI, assets, private APIs, or protected behavior.</p>
+      </section>
+      <section class="panel">
+        <h2>How it can fund itself</h2>
+        <p>The project can use donations, sponsors, internal project promotion, and respectful ads on content pages. Ads should never block or confuse the working tool interface.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Open Free Tools is an independent open-source project. No affiliation with paid services mentioned in comparisons.</p>
+      <p><a href="../../de/privacy/">Privacy</a> · <a href="../../de/legal/">Legal</a> · <a href="../../de/contact/">Contact</a></p>
+    </footer>
+    <script>
+      (() => {
+        const button = document.querySelector("[data-theme-toggle]");
+        const icon = document.querySelector("[data-theme-icon]");
+        const setIcon = () => {
+          const theme = document.documentElement.dataset.theme || "light";
+          icon.textContent = theme === "dark" ? "☀" : "☾";
+          button.setAttribute("aria-label", theme === "dark" ? "Switch to light theme" : "Switch to dark theme");
+        };
+
+        setIcon();
+        button.addEventListener("click", () => {
+          const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+          document.documentElement.dataset.theme = next;
+          localStorage.setItem("oft-theme", next);
+          setIcon();
+        });
+      })();
+    </script>
+  </body>
+</html>

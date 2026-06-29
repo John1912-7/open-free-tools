@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="hy">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+    <title>Անվճար Audio to MIDI Converter</title>
+    <meta name="description" content="Ձեր սեփական աուդիո ֆայլերը վերածեք MIDI-ի optional backend-ի միջոցով:" />
+    <link rel="canonical" href="https://john1912-7.github.io/open-free-tools/hy/tools/audio-to-midi/" />
+    <link rel="alternate" hreflang="x-default" href="https://john1912-7.github.io/open-free-tools/tools/audio-to-midi/" />
+    <link rel="alternate" hreflang="en" href="https://john1912-7.github.io/open-free-tools/en/tools/audio-to-midi/" />
+    <link rel="alternate" hreflang="ru" href="https://john1912-7.github.io/open-free-tools/ru/tools/audio-to-midi/" />
+    <link rel="alternate" hreflang="de" href="https://john1912-7.github.io/open-free-tools/de/tools/audio-to-midi/" />
+    <link rel="alternate" hreflang="es" href="https://john1912-7.github.io/open-free-tools/es/tools/audio-to-midi/" />
+    <link rel="alternate" hreflang="hy" href="https://john1912-7.github.io/open-free-tools/hy/tools/audio-to-midi/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="hy" />
+    <meta property="og:title" content="Անվճար Audio to MIDI Converter" />
+    <meta property="og:description" content="Ձեր սեփական աուդիո ֆայլերը վերածեք MIDI-ի optional backend-ի միջոցով:" />
+    <meta property="og:url" content="https://john1912-7.github.io/open-free-tools/hy/tools/audio-to-midi/" />
+    <meta property="og:site_name" content="Open Free Tools" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Անվճար Audio to MIDI Converter" />
+    <meta name="twitter:description" content="Ձեր սեփական աուդիո ֆայլերը վերածեք MIDI-ի optional backend-ի միջոցով:" />
+    <script>
+      (() => {
+        const saved = localStorage.getItem("oft-theme");
+        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.dataset.theme = saved || (prefersDark ? "dark" : "light");
+      })();
+    </script>
+    <link rel="stylesheet" href="../../../assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../../../hy/">
+        <span>OFT</span>
+        <strong>Open Free Tools</strong>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="../../../hy/tools/">Գործիքներ</a>
+        <a href="../../../hy/about/">Նախագիծ</a>
+        <a href="../../../hy/blog/">Բլոգ</a>
+        <a href="../../../hy/donate/">Նվիրաբերել</a>
+        <a href="../../../hy/contribute/">Մասնակցել</a>
+        <a href="../../../hy/legal/">Իրավական</a>
+        <a href="../../../hy/contact/">Կապ</a>
+      </nav>
+      <div class="header-controls">
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle dark or light theme">
+          <span data-theme-icon>◐</span>
+        </button>
+        <details class="language-menu">
+          <summary aria-label="Change language">
+            <span class="flag">🇦🇲</span>
+            <span class="chevron" aria-hidden="true">▾</span>
+          </summary>
+          <div class="language-list" aria-label="Languages">
+          <a href="../../../en/tools/audio-to-midi/"><span class="flag">🇬🇧</span><span>English</span></a>
+          <a href="../../../ru/tools/audio-to-midi/"><span class="flag">🇷🇺</span><span>Русский</span></a>
+          <a href="../../../de/tools/audio-to-midi/"><span class="flag">🇩🇪</span><span>Deutsch</span></a>
+          <a href="../../../es/tools/audio-to-midi/"><span class="flag">🇪🇸</span><span>Español</span></a>
+          <a href="../../../hy/tools/audio-to-midi/" aria-current="true"><span class="flag">🇦🇲</span><span>Հայերեն</span></a>
+          </div>
+        </details>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Free · Open Source · Browser First</p>
+          <h1>Անվճար Audio to MIDI Converter</h1>
+          <p>Audio-to-MIDI-ն փորձնական է. վերբեռնեք ձեր ֆայլը, ստացեք MIDI եւ բացեք trainer-ում:</p>
+          <div class="hero-actions">
+            <a class="button primary" href="https://john1912-7.github.io/midi-piano-trainer/">Փորձել գործիքը</a>
+            <a class="button" href="https://github.com/john1912-7">Star GitHub-ում</a>
+          </div>
+        </div>
+        
+      </section>
+
+
+      <section class="project-overview">
+        <article>
+          <span class="status">Experimental tool</span>
+          <h2>What it is</h2>
+          <p>A converter for user-owned audio files using an optional backend. The generated MIDI can be downloaded or opened in MIDI Piano Trainer.</p>
+        </article>
+        <article>
+          <h2>Already available</h2>
+          <ul>
+            <li>MP3/WAV/OGG/FLAC upload</li>
+            <li>Configurable backend URL</li>
+            <li>Backend health check</li>
+            <li>MIDI download</li>
+            <li>Open generated MIDI in trainer</li>
+          </ul>
+        </article>
+        <article>
+          <h2>Next</h2>
+          <ul>
+            <li>Explain backend setup clearly</li>
+            <li>Add troubleshooting</li>
+            <li>Show good audio examples</li>
+            <li>Prepare a short demo video</li>
+          </ul>
+        </article>
+      </section>
+      <section class="tool-actions">
+        <a class="button primary" href="https://john1912-7.github.io/midi-piano-trainer/">Փորձել գործիքը</a>
+        <a class="button" href="https://github.com/john1912-7">Ուղարկել feedback</a>
+        <a class="button" href="https://github.com/john1912-7">Star GitHub-ում</a>
+        <a class="button" href="https://john1912-7.github.io/open-free-tools/donate/">Աջակցել</a>
+        <a class="button" href="mailto:?subject=Open Free Tools&body=https%3A%2F%2Fjohn1912-7.github.io%2Fopen-free-tools">Կիսվել</a>
+      </section>
+      <section class="panel">
+        <h2>Launch kit</h2>
+        <p>Each tool needs a short pitch, screenshots or video, community post drafts, a feedback issue, and a release note before a public push.</p>
+      </section>
+      <section class="panel ad-note">
+        <h2>AdSense-safe placement</h2>
+        <p>Ads belong on guides, landing pages, and comparison content. They must not sit next to upload, play, convert, download, or editor controls.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Open Free Tools is an independent open-source project. No affiliation with paid services mentioned in comparisons.</p>
+      <p><a href="../../../hy/privacy/">Privacy</a> · <a href="../../../hy/legal/">Legal</a> · <a href="../../../hy/contact/">Contact</a></p>
+    </footer>
+    <script>
+      (() => {
+        const button = document.querySelector("[data-theme-toggle]");
+        const icon = document.querySelector("[data-theme-icon]");
+        const setIcon = () => {
+          const theme = document.documentElement.dataset.theme || "light";
+          icon.textContent = theme === "dark" ? "☀" : "☾";
+          button.setAttribute("aria-label", theme === "dark" ? "Switch to light theme" : "Switch to dark theme");
+        };
+
+        setIcon();
+        button.addEventListener("click", () => {
+          const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+          document.documentElement.dataset.theme = next;
+          localStorage.setItem("oft-theme", next);
+          setIcon();
+        });
+      })();
+    </script>
+  </body>
+</html>

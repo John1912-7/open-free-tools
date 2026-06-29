@@ -1,0 +1,1378 @@
+import { mkdir, writeFile } from "node:fs/promises";
+import { dirname, join } from "node:path";
+
+const site = {
+  name: "Open Free Tools",
+  baseUrl: "https://john1912-7.github.io/open-free-tools",
+  midiUrl: "https://john1912-7.github.io/midi-piano-trainer/",
+  githubUrl: "https://github.com/john1912-7",
+};
+
+const languages = {
+  en: {
+    label: "English",
+    flag: "🇬🇧",
+    locale: "en",
+    nav: ["Tools", "About", "Blog", "Donate", "Contribute", "Legal", "Contact"],
+    pages: {
+      home: {
+        title: "Open Free Tools - free open-source alternatives to paid tools",
+        description:
+          "A multilingual hub for free, open-source, browser-first tools: MIDI practice, audio to MIDI, and future transcription workflows.",
+        h1: "Free open-source tools without subscription traps",
+        intro:
+          "Open Free Tools collects useful browser-first tools that stay free, open-source, and practical. The first live project is MIDI Piano Trainer, with audio-to-MIDI conversion already in progress.",
+      },
+      tools: {
+        title: "Free Open-Source Tools - Open Free Tools",
+        description:
+          "Browse free tools for MIDI practice, audio-to-MIDI conversion, and future transcription workflows.",
+        h1: "Free tools catalog",
+        intro: "Each tool is designed to be useful without an account, friendly to self-hosting, and clear about backend limits.",
+      },
+      about: {
+        title: "About Open Free Tools - why this project exists",
+        description:
+          "Open Free Tools builds free, open-source, browser-first alternatives to subscription workflows with clear privacy, legal, and monetization rules.",
+        h1: "Why Open Free Tools exists",
+        intro:
+          "Many useful tools move behind subscriptions. This project explores a different path: practical open-source tools, transparent limits, and a website that can fund itself without paywalling core features.",
+      },
+      midi: {
+        title: "Free MIDI Piano Trainer Online - Open Free Tools",
+        description:
+          "Practice MIDI files in your browser with falling notes, keyboard input, track selection, and accuracy feedback.",
+        h1: "Free MIDI Piano Trainer Online",
+        intro:
+          "Upload a MIDI file, follow falling notes, choose tracks, and practice with your PC keyboard. This is the first official tool in the Open Free Tools ecosystem.",
+      },
+      audio: {
+        title: "Free Audio to MIDI Converter - Open Free Tools",
+        description:
+          "Convert your own audio files to MIDI with an optional backend, then open the result in MIDI Piano Trainer.",
+        h1: "Free Audio to MIDI Converter",
+        intro:
+          "Audio-to-MIDI is experimental and backend-assisted. Upload your own audio file, generate MIDI, download it, or open it in the piano trainer.",
+      },
+      transcription: {
+        title: "Open Source Transcription Studio - Open Free Tools",
+        description:
+          "Roadmap for a free, open-source transcription editor with local-first editing and subtitle export.",
+        h1: "Open Source Transcription Studio",
+        intro:
+          "A planned privacy-first transcription editor for audio and video, with transcript editing, timestamps, and exports such as TXT, SRT, and VTT.",
+      },
+      blog: {
+        title: "Guides for Free Music and Transcription Tools - Open Free Tools",
+        description:
+          "SEO-friendly guides about MIDI practice, audio-to-MIDI conversion, open-source transcription, and privacy-friendly workflows.",
+        h1: "Guides and build notes",
+        intro:
+          "Useful articles will explain real workflows, not thin content: how to convert audio to MIDI, practice MIDI files, and build open-source transcription workflows.",
+      },
+      donate: {
+        title: "Donate and Support Open Free Tools",
+        description:
+          "Support free open-source tools through donations, GitHub Sponsors, feedback, testing, and sharing.",
+        h1: "Support the project",
+        intro:
+          "Core functionality stays free. Donations, sponsors, feedback, and sharing help keep the project independent and affordable to run.",
+      },
+      contribute: {
+        title: "Contribute to Open Free Tools",
+        description:
+          "Help with code, design, translations, testing, documentation, SEO pages, and launch feedback.",
+        h1: "Contribute",
+        intro:
+          "You can help by testing tools, reporting bugs, improving translations, writing guides, or contributing code to the open-source projects.",
+      },
+      privacy: {
+        title: "Privacy Policy - Open Free Tools",
+        description:
+          "Privacy-first principles for Open Free Tools, including local processing, analytics, ads, and user-submitted files.",
+        h1: "Privacy Policy",
+        intro:
+          "The project prefers browser-side processing and clear data boundaries. Backend features should explain when files leave the device.",
+      },
+      legal: {
+        title: "Legal Disclaimer - Open Free Tools",
+        description:
+          "Open Free Tools legal disclaimer: independent open-source alternatives, no affiliation with paid services mentioned in comparisons.",
+        h1: "Legal Disclaimer",
+        intro:
+          "Open Free Tools builds independent alternatives. It does not copy brands, logos, private APIs, copyrighted assets, or paid-service interfaces.",
+      },
+      contact: {
+        title: "Contact Open Free Tools",
+        description:
+          "Contact Open Free Tools for bug reports, feedback, launch suggestions, partnerships, and legal requests.",
+        h1: "Contact",
+        intro:
+          "Use GitHub issues for product feedback and bug reports. Add a public contact email before applying for AdSense.",
+      },
+    },
+    ctaTry: "Try the tool",
+    ctaFeedback: "Give feedback",
+    ctaStar: "Star on GitHub",
+    ctaSupport: "Support the project",
+    ctaShare: "Share this tool",
+  },
+  ru: {
+    label: "Русский",
+    flag: "🇷🇺",
+    locale: "ru",
+    nav: ["Инструменты", "О проекте", "Блог", "Донат", "Участие", "Правила", "Контакт"],
+    pages: {
+      home: {
+        title: "Open Free Tools - бесплатные open-source альтернативы",
+        description:
+          "Мультиязычный hub бесплатных open-source инструментов: MIDI-тренажер, аудио в MIDI и будущая transcription studio.",
+        h1: "Бесплатные open-source инструменты без подписок",
+        intro:
+          "Open Free Tools собирает полезные browser-first инструменты, которые остаются бесплатными, открытыми и практичными.",
+      },
+      tools: {
+        title: "Бесплатные open-source инструменты - Open Free Tools",
+        description: "Каталог бесплатных инструментов для MIDI, audio-to-MIDI и будущей транскрипции.",
+        h1: "Каталог бесплатных инструментов",
+        intro: "Каждый инструмент должен быть полезен без аккаунта, понятен для self-hosting и честен про backend-лимиты.",
+      },
+      about: {
+        title: "О проекте Open Free Tools",
+        description:
+          "Open Free Tools делает бесплатные open-source альтернативы платным инструментам с понятной приватностью, SEO и безопасной монетизацией.",
+        h1: "Зачем существует Open Free Tools",
+        intro:
+          "Многие полезные инструменты уходят в подписки. Этот проект пробует другой путь: открытые бесплатные инструменты, честные ограничения и монетизация без paywall для core-функций.",
+      },
+      midi: {
+        title: "Бесплатный MIDI Piano Trainer онлайн",
+        description: "Тренируйте MIDI-файлы в браузере: падающие ноты, клавиатура ПК, выбор дорожек и статистика.",
+        h1: "Бесплатный MIDI Piano Trainer онлайн",
+        intro: "Загрузите MIDI-файл, следите за падающими нотами, выбирайте дорожки и тренируйтесь на клавиатуре ПК.",
+      },
+      audio: {
+        title: "Бесплатный конвертер аудио в MIDI",
+        description: "Конвертируйте свои аудиофайлы в MIDI через optional backend и открывайте результат в тренажере.",
+        h1: "Бесплатный конвертер аудио в MIDI",
+        intro: "Audio-to-MIDI пока экспериментальный: пользователь загружает свой файл, получает MIDI и открывает его в тренажере.",
+      },
+      transcription: {
+        title: "Open Source Transcription Studio",
+        description: "План бесплатного open-source редактора транскрипций с экспортом TXT, SRT и VTT.",
+        h1: "Open Source Transcription Studio",
+        intro: "Будущий privacy-first редактор транскрипций для аудио и видео с таймкодами и экспортом субтитров.",
+      },
+      blog: {
+        title: "Гайды по бесплатным music и transcription tools",
+        description: "Полезные статьи про MIDI, audio-to-MIDI, open-source транскрипцию и privacy-friendly workflows.",
+        h1: "Гайды и заметки разработки",
+        intro: "Статьи должны решать реальные задачи: как конвертировать аудио в MIDI, тренироваться по MIDI и делать транскрипции.",
+      },
+      donate: {
+        title: "Поддержать Open Free Tools",
+        description: "Поддержите бесплатные open-source инструменты донатами, GitHub Sponsors, тестами и распространением.",
+        h1: "Поддержать проект",
+        intro: "Основной функционал остается бесплатным. Донаты, спонсоры, фидбек и шеры помогают проекту жить независимо.",
+      },
+      contribute: {
+        title: "Участвовать в Open Free Tools",
+        description: "Помогите кодом, дизайном, переводами, тестированием, документацией и SEO-страницами.",
+        h1: "Участвовать",
+        intro: "Можно помогать тестами, баг-репортами, переводами, гайдами или кодом в open-source репозиториях.",
+      },
+      privacy: {
+        title: "Политика приватности - Open Free Tools",
+        description: "Принципы приватности Open Free Tools: локальная обработка, аналитика, реклама и пользовательские файлы.",
+        h1: "Политика приватности",
+        intro: "Проект предпочитает обработку в браузере и ясные границы данных. Backend-функции должны объяснять, когда файл покидает устройство.",
+      },
+      legal: {
+        title: "Legal Disclaimer - Open Free Tools",
+        description: "Open Free Tools является независимым проектом и не связан с платными сервисами, которые упоминаются в сравнениях.",
+        h1: "Legal Disclaimer",
+        intro: "Проект делает независимые альтернативы и не копирует бренды, логотипы, приватные API, ассеты или интерфейсы платных сервисов.",
+      },
+      contact: {
+        title: "Контакт - Open Free Tools",
+        description: "Связь с Open Free Tools для багов, фидбека, идей запуска, партнерств и юридических запросов.",
+        h1: "Контакт",
+        intro: "Для фидбека и багов используйте GitHub issues. Перед AdSense нужно добавить публичный email.",
+      },
+    },
+    ctaTry: "Открыть инструмент",
+    ctaFeedback: "Оставить фидбек",
+    ctaStar: "Звезда на GitHub",
+    ctaSupport: "Поддержать проект",
+    ctaShare: "Поделиться",
+  },
+  de: {
+    label: "Deutsch",
+    flag: "🇩🇪",
+    locale: "de",
+    nav: ["Tools", "Projekt", "Blog", "Spenden", "Mitmachen", "Rechtliches", "Kontakt"],
+    pages: {
+      home: {
+        title: "Open Free Tools - kostenlose Open-Source-Alternativen",
+        description: "Mehrsprachiger Hub fuer kostenlose Open-Source-Tools: MIDI Training, Audio zu MIDI und Transkription.",
+        h1: "Kostenlose Open-Source-Tools ohne Abo-Fallen",
+        intro: "Open Free Tools sammelt browser-first Werkzeuge, die frei, offen und praktisch bleiben.",
+      },
+      tools: {
+        title: "Kostenlose Open-Source-Tools - Open Free Tools",
+        description: "Katalog fuer MIDI Training, Audio-zu-MIDI und kommende Transkriptions-Workflows.",
+        h1: "Tool-Katalog",
+        intro: "Jedes Tool soll ohne Account nutzbar sein, Self-Hosting respektieren und Backend-Grenzen klar zeigen.",
+      },
+      about: {
+        title: "Ueber Open Free Tools",
+        description: "Warum Open Free Tools freie, offene und browser-first Alternativen zu Abo-Workflows baut.",
+        h1: "Warum Open Free Tools existiert",
+        intro: "Das Projekt baut praktische Open-Source-Tools mit klaren Grenzen, Datenschutz und fairer Monetarisierung.",
+      },
+      midi: {
+        title: "Kostenloser MIDI Piano Trainer online",
+        description: "MIDI-Dateien im Browser ueben: fallende Noten, PC-Tastatur, Spurauswahl und Trefferstatistik.",
+        h1: "Kostenloser MIDI Piano Trainer online",
+        intro: "Lade eine MIDI-Datei hoch, folge fallenden Noten und uebe mit deiner PC-Tastatur.",
+      },
+      audio: {
+        title: "Kostenloser Audio zu MIDI Converter",
+        description: "Eigene Audiodateien per optionalem Backend in MIDI konvertieren und im Trainer oeffnen.",
+        h1: "Kostenloser Audio zu MIDI Converter",
+        intro: "Audio-to-MIDI ist experimentell: eigene Datei hochladen, MIDI erzeugen, herunterladen oder im Trainer oeffnen.",
+      },
+      transcription: {
+        title: "Open Source Transcription Studio",
+        description: "Roadmap fuer einen freien Transkriptionseditor mit TXT-, SRT- und VTT-Export.",
+        h1: "Open Source Transcription Studio",
+        intro: "Ein geplanter privacy-first Editor fuer Audio- und Video-Transkription mit Zeitstempeln und Untertitel-Export.",
+      },
+      blog: {
+        title: "Guides fuer kostenlose Musik- und Transkriptions-Tools",
+        description: "Hilfreiche Artikel zu MIDI, Audio-to-MIDI, Open-Source-Transkription und Privacy-Workflows.",
+        h1: "Guides und Build Notes",
+        intro: "Artikel sollen echte Workflows erklaeren statt duennen SEO-Content zu erzeugen.",
+      },
+      donate: {
+        title: "Open Free Tools unterstuetzen",
+        description: "Unterstuetze kostenlose Open-Source-Tools mit Spenden, Feedback, Tests und Teilen.",
+        h1: "Projekt unterstuetzen",
+        intro: "Die Kernfunktionen bleiben kostenlos. Spenden, Sponsoren und Feedback helfen dem Projekt.",
+      },
+      contribute: {
+        title: "Zu Open Free Tools beitragen",
+        description: "Hilf mit Code, Design, Uebersetzungen, Tests, Dokumentation und SEO-Seiten.",
+        h1: "Mitmachen",
+        intro: "Du kannst durch Tests, Bug Reports, Uebersetzungen, Guides oder Code beitragen.",
+      },
+      privacy: {
+        title: "Datenschutz - Open Free Tools",
+        description: "Datenschutzprinzipien: lokale Verarbeitung, Analytics, Ads und Nutzerdateien.",
+        h1: "Datenschutz",
+        intro: "Das Projekt bevorzugt Verarbeitung im Browser und klare Daten-Grenzen.",
+      },
+      legal: {
+        title: "Rechtlicher Hinweis - Open Free Tools",
+        description: "Open Free Tools ist unabhaengig und nicht mit erwaehnten kostenpflichtigen Diensten verbunden.",
+        h1: "Rechtlicher Hinweis",
+        intro: "Das Projekt baut unabhaengige Alternativen und kopiert keine Marken, Logos, privaten APIs oder Interfaces.",
+      },
+      contact: {
+        title: "Kontakt - Open Free Tools",
+        description: "Kontakt fuer Feedback, Bugs, Launch-Ideen, Partnerschaften und rechtliche Anfragen.",
+        h1: "Kontakt",
+        intro: "Nutze GitHub Issues fuer Feedback und Bug Reports. Eine oeffentliche E-Mail folgt vor AdSense.",
+      },
+    },
+    ctaTry: "Tool oeffnen",
+    ctaFeedback: "Feedback geben",
+    ctaStar: "Auf GitHub merken",
+    ctaSupport: "Projekt unterstuetzen",
+    ctaShare: "Teilen",
+  },
+  es: {
+    label: "Español",
+    flag: "🇪🇸",
+    locale: "es",
+    nav: ["Herramientas", "Proyecto", "Blog", "Donar", "Contribuir", "Legal", "Contacto"],
+    pages: {
+      home: {
+        title: "Open Free Tools - alternativas open-source gratis",
+        description: "Hub multilingue de herramientas gratis y open-source: MIDI, audio a MIDI y futura transcripcion.",
+        h1: "Herramientas open-source gratis sin suscripciones",
+        intro: "Open Free Tools reune herramientas utiles, orientadas al navegador, gratuitas y abiertas.",
+      },
+      tools: {
+        title: "Herramientas open-source gratis - Open Free Tools",
+        description: "Catalogo de herramientas para practica MIDI, conversion audio a MIDI y transcripcion.",
+        h1: "Catalogo de herramientas",
+        intro: "Cada herramienta debe funcionar sin cuenta, respetar self-hosting y explicar sus limites de backend.",
+      },
+      about: {
+        title: "Sobre Open Free Tools",
+        description: "Por que Open Free Tools crea alternativas gratuitas, open-source y orientadas al navegador.",
+        h1: "Por que existe Open Free Tools",
+        intro: "El proyecto crea herramientas practicas, abiertas y gratuitas con privacidad clara y monetizacion responsable.",
+      },
+      midi: {
+        title: "MIDI Piano Trainer gratis online",
+        description: "Practica archivos MIDI en el navegador con notas descendentes, teclado del PC y estadisticas.",
+        h1: "MIDI Piano Trainer gratis online",
+        intro: "Sube un archivo MIDI, sigue las notas descendentes y practica con el teclado del PC.",
+      },
+      audio: {
+        title: "Conversor audio a MIDI gratis",
+        description: "Convierte tus propios archivos de audio a MIDI con backend opcional y abre el resultado en el trainer.",
+        h1: "Conversor audio a MIDI gratis",
+        intro: "Audio-to-MIDI es experimental: sube tu propio archivo, genera MIDI, descargalo o abrelo en el trainer.",
+      },
+      transcription: {
+        title: "Open Source Transcription Studio",
+        description: "Roadmap de un editor de transcripcion gratis con exportacion TXT, SRT y VTT.",
+        h1: "Open Source Transcription Studio",
+        intro: "Un futuro editor privacy-first para transcribir audio y video con marcas de tiempo y subtitulos.",
+      },
+      blog: {
+        title: "Guias de herramientas gratis de musica y transcripcion",
+        description: "Articulos utiles sobre MIDI, audio a MIDI, transcripcion open-source y privacidad.",
+        h1: "Guias y notas de desarrollo",
+        intro: "Los articulos deben resolver flujos reales, no crear contenido SEO vacio.",
+      },
+      donate: {
+        title: "Donar a Open Free Tools",
+        description: "Apoya herramientas open-source gratis con donaciones, feedback, pruebas y difusion.",
+        h1: "Apoyar el proyecto",
+        intro: "La funcionalidad principal sigue gratis. Donaciones, sponsors, feedback y difusion ayudan al proyecto.",
+      },
+      contribute: {
+        title: "Contribuir a Open Free Tools",
+        description: "Ayuda con codigo, diseno, traducciones, pruebas, documentacion y paginas SEO.",
+        h1: "Contribuir",
+        intro: "Puedes ayudar con pruebas, bugs, traducciones, guias o codigo.",
+      },
+      privacy: {
+        title: "Privacidad - Open Free Tools",
+        description: "Principios de privacidad: procesamiento local, analitica, anuncios y archivos de usuario.",
+        h1: "Privacidad",
+        intro: "El proyecto prefiere procesamiento en el navegador y limites claros sobre los datos.",
+      },
+      legal: {
+        title: "Aviso legal - Open Free Tools",
+        description: "Open Free Tools es independiente y no esta afiliado con servicios de pago mencionados en comparaciones.",
+        h1: "Aviso legal",
+        intro: "El proyecto crea alternativas independientes y no copia marcas, logos, APIs privadas ni interfaces.",
+      },
+      contact: {
+        title: "Contacto - Open Free Tools",
+        description: "Contacto para feedback, bugs, ideas de lanzamiento, partners y solicitudes legales.",
+        h1: "Contacto",
+        intro: "Usa GitHub Issues para feedback y bugs. Se anadira un email publico antes de AdSense.",
+      },
+    },
+    ctaTry: "Probar herramienta",
+    ctaFeedback: "Dar feedback",
+    ctaStar: "Star en GitHub",
+    ctaSupport: "Apoyar proyecto",
+    ctaShare: "Compartir",
+  },
+  hy: {
+    label: "Հայերեն",
+    flag: "🇦🇲",
+    locale: "hy",
+    nav: ["Գործիքներ", "Նախագիծ", "Բլոգ", "Նվիրաբերել", "Մասնակցել", "Իրավական", "Կապ"],
+    pages: {
+      home: {
+        title: "Open Free Tools - անվճար open-source գործիքներ",
+        description: "Բազմալեզու հարթակ անվճար open-source գործիքների համար՝ MIDI, audio-to-MIDI եւ transcription:",
+        h1: "Անվճար open-source գործիքներ առանց բաժանորդագրության",
+        intro: "Open Free Tools-ը հավաքում է օգտակար browser-first գործիքներ, որոնք մնում են անվճար եւ բաց:",
+      },
+      tools: {
+        title: "Անվճար open-source գործիքներ - Open Free Tools",
+        description: "Գործիքների կատալոգ MIDI-ի, audio-to-MIDI-ի եւ ապագա transcription workflow-ների համար:",
+        h1: "Գործիքների կատալոգ",
+        intro: "Յուրաքանչյուր գործիք պետք է օգտակար լինի առանց հաշվի եւ պարզ բացատրի backend-ի սահմանները:",
+      },
+      about: {
+        title: "Open Free Tools նախագծի մասին",
+        description: "Ինչու Open Free Tools-ը ստեղծում է անվճար, open-source եւ browser-first գործիքներ:",
+        h1: "Ինչու կա Open Free Tools-ը",
+        intro: "Նախագիծը ստեղծում է գործնական open-source գործիքներ՝ հստակ privacy-ով, սահմաններով եւ պատասխանատու monetization-ով:",
+      },
+      midi: {
+        title: "Անվճար MIDI Piano Trainer առցանց",
+        description: "Սովորեք MIDI ֆայլերով բրաուզերում՝ ընկնող նոտաներ, PC ստեղնաշար եւ վիճակագրություն:",
+        h1: "Անվճար MIDI Piano Trainer առցանց",
+        intro: "Վերբեռնեք MIDI ֆայլ, հետեւեք ընկնող նոտաներին եւ վարժվեք PC ստեղնաշարով:",
+      },
+      audio: {
+        title: "Անվճար Audio to MIDI Converter",
+        description: "Ձեր սեփական աուդիո ֆայլերը վերածեք MIDI-ի optional backend-ի միջոցով:",
+        h1: "Անվճար Audio to MIDI Converter",
+        intro: "Audio-to-MIDI-ն փորձնական է. վերբեռնեք ձեր ֆայլը, ստացեք MIDI եւ բացեք trainer-ում:",
+      },
+      transcription: {
+        title: "Open Source Transcription Studio",
+        description: "Անվճար transcription editor-ի պլան՝ TXT, SRT եւ VTT export-ով:",
+        h1: "Open Source Transcription Studio",
+        intro: "Ապագա privacy-first editor աուդիո եւ վիդեո transcription-ի համար՝ timestamps եւ subtitles export:",
+      },
+      blog: {
+        title: "Ուղեցույցներ անվճար music եւ transcription tools-ի մասին",
+        description: "Օգտակար հոդվածներ MIDI-ի, audio-to-MIDI-ի եւ open-source transcription-ի մասին:",
+        h1: "Ուղեցույցներ եւ զարգացման նշումներ",
+        intro: "Հոդվածները պետք է լուծեն իրական խնդիրներ, ոչ թե լինեն դատարկ SEO էջեր:",
+      },
+      donate: {
+        title: "Աջակցել Open Free Tools-ին",
+        description: "Աջակցեք անվճար open-source գործիքներին նվիրատվություններով, feedback-ով եւ տարածումով:",
+        h1: "Աջակցել նախագծին",
+        intro: "Հիմնական ֆունկցիաները մնում են անվճար: Նվիրատվությունները եւ feedback-ը օգնում են նախագծին:",
+      },
+      contribute: {
+        title: "Մասնակցել Open Free Tools-ին",
+        description: "Օգնեք code-ով, design-ով, թարգմանությամբ, testing-ով եւ documentation-ով:",
+        h1: "Մասնակցել",
+        intro: "Կարող եք օգնել testing-ով, bug reports-ով, թարգմանությամբ, guides-ով կամ code-ով:",
+      },
+      privacy: {
+        title: "Գաղտնիություն - Open Free Tools",
+        description: "Գաղտնիության սկզբունքներ՝ local processing, analytics, ads եւ user files:",
+        h1: "Գաղտնիություն",
+        intro: "Նախագիծը նախընտրում է browser-side processing եւ տվյալների հստակ սահմաններ:",
+      },
+      legal: {
+        title: "Իրավական նշում - Open Free Tools",
+        description: "Open Free Tools-ը անկախ նախագիծ է եւ կապ չունի վճարովի ծառայությունների հետ:",
+        h1: "Իրավական նշում",
+        intro: "Նախագիծը ստեղծում է անկախ alternative-ներ եւ չի պատճենում brands, logos, private APIs կամ interfaces:",
+      },
+      contact: {
+        title: "Կապ - Open Free Tools",
+        description: "Կապ feedback-ի, bug reports-ի, launch ideas-ի եւ իրավական հարցերի համար:",
+        h1: "Կապ",
+        intro: "Feedback-ի եւ bugs-ի համար օգտագործեք GitHub Issues: Public email կավելացվի AdSense-ից առաջ:",
+      },
+    },
+    ctaTry: "Փորձել գործիքը",
+    ctaFeedback: "Ուղարկել feedback",
+    ctaStar: "Star GitHub-ում",
+    ctaSupport: "Աջակցել",
+    ctaShare: "Կիսվել",
+  },
+};
+
+const routeMap = {
+  home: "",
+  tools: "tools",
+  about: "about",
+  midi: "tools/midi-piano-trainer",
+  audio: "tools/audio-to-midi",
+  transcription: "tools/open-transcription-studio",
+  blog: "blog",
+  donate: "donate",
+  contribute: "contribute",
+  privacy: "privacy",
+  legal: "legal",
+  contact: "contact",
+};
+
+const rootRoutes = ["home", "tools", "about", "midi", "audio", "transcription", "blog", "donate", "contribute", "privacy", "legal", "contact"];
+const languageCodes = Object.keys(languages);
+const generatedPaths = [];
+
+async function writeStaticAssets() {
+  await mkdir("assets", { recursive: true });
+  await writeFile("assets/styles.css", styles, "utf8");
+}
+
+async function writePage(route, lang, path) {
+  const target = path ? join(path, "index.html") : "index.html";
+  await mkdir(dirname(target), { recursive: true });
+  const html = renderPage(route, lang, path);
+  await writeFile(target, html, "utf8");
+  generatedPaths.push(path.replaceAll("\\", "/"));
+}
+
+function renderPage(route, lang, path) {
+  const data = languages[lang];
+  const page = data.pages[route];
+  const pagePath = path.replaceAll("\\", "/");
+  const url = canonical(path);
+  const cssPath = `${relativePrefix(path)}assets/styles.css`;
+  const rootPrefix = relativePrefix(path);
+  const hasLanguagePrefix = pagePath === lang || pagePath.startsWith(`${lang}/`);
+  const localizedPrefix = hasLanguagePrefix ? `${lang}/` : "";
+  const navItems = [
+    ["tools", data.nav[0]],
+    ["about", data.nav[1]],
+    ["blog", data.nav[2]],
+    ["donate", data.nav[3]],
+    ["contribute", data.nav[4]],
+    ["legal", data.nav[5]],
+    ["contact", data.nav[6]],
+  ];
+  const isToolPage = ["midi", "audio", "transcription"].includes(route);
+
+  return `<!doctype html>
+<html lang="${lang}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+    <title>${escapeHtml(page.title)}</title>
+    <meta name="description" content="${escapeHtml(page.description)}" />
+    <link rel="canonical" href="${url}" />
+${alternateLinks(route)}
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="${data.locale}" />
+    <meta property="og:title" content="${escapeHtml(page.title)}" />
+    <meta property="og:description" content="${escapeHtml(page.description)}" />
+    <meta property="og:url" content="${url}" />
+    <meta property="og:site_name" content="${site.name}" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="${escapeHtml(page.title)}" />
+    <meta name="twitter:description" content="${escapeHtml(page.description)}" />
+    <script>
+      (() => {
+        const saved = localStorage.getItem("oft-theme");
+        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.dataset.theme = saved || (prefersDark ? "dark" : "light");
+      })();
+    </script>
+    <link rel="stylesheet" href="${cssPath}" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="${rootPrefix}${localizedPrefix}">
+        <span>OFT</span>
+        <strong>${site.name}</strong>
+      </a>
+      <nav aria-label="Main navigation">
+${navItems.map(([key, label]) => `        <a href="${rootPrefix}${localizedPrefix}${routeMap[key]}/">${escapeHtml(label)}</a>`).join("\n")}
+      </nav>
+      <div class="header-controls">
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle dark or light theme">
+          <span data-theme-icon>◐</span>
+        </button>
+        <details class="language-menu">
+          <summary aria-label="Change language">
+            <span class="flag">${languages[lang].flag}</span>
+            <span class="chevron" aria-hidden="true">▾</span>
+          </summary>
+          <div class="language-list" aria-label="Languages">
+${languageCodes.map((code) => `          <a href="${rootPrefix}${code}/${routeMap[route] ? `${routeMap[route]}/` : ""}"${code === lang ? ' aria-current="true"' : ""}><span class="flag">${languages[code].flag}</span><span>${escapeHtml(languages[code].label)}</span></a>`).join("\n")}
+          </div>
+        </details>
+      </div>
+    </header>
+
+    <main>
+      ${renderHero(route, page, data)}
+
+${renderRouteBody(route, data, isToolPage)}
+    </main>
+
+    <footer>
+      <p>${site.name} is an independent open-source project. No affiliation with paid services mentioned in comparisons.</p>
+      <p><a href="${rootPrefix}${localizedPrefix}privacy/">Privacy</a> · <a href="${rootPrefix}${localizedPrefix}legal/">Legal</a> · <a href="${rootPrefix}${localizedPrefix}contact/">Contact</a></p>
+    </footer>
+    <script>
+      (() => {
+        const button = document.querySelector("[data-theme-toggle]");
+        const icon = document.querySelector("[data-theme-icon]");
+        const setIcon = () => {
+          const theme = document.documentElement.dataset.theme || "light";
+          icon.textContent = theme === "dark" ? "☀" : "☾";
+          button.setAttribute("aria-label", theme === "dark" ? "Switch to light theme" : "Switch to dark theme");
+        };
+
+        setIcon();
+        button.addEventListener("click", () => {
+          const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+          document.documentElement.dataset.theme = next;
+          localStorage.setItem("oft-theme", next);
+          setIcon();
+        });
+      })();
+    </script>
+  </body>
+</html>
+`;
+}
+
+function renderHero(route, page, data) {
+  const hasVisual = route === "home";
+  return `<section class="hero${hasVisual ? " hero-split" : ""}">
+        <div class="hero-copy">
+          <p class="eyebrow">Free · Open Source · Browser First</p>
+          <h1>${escapeHtml(page.h1)}</h1>
+          <p>${escapeHtml(page.intro)}</p>
+          <div class="hero-actions">
+            <a class="button primary" href="${site.midiUrl}">${escapeHtml(data.ctaTry)}</a>
+            <a class="button" href="${site.githubUrl}">${escapeHtml(data.ctaStar)}</a>
+          </div>
+        </div>
+        ${hasVisual ? renderStudioVisual() : ""}
+      </section>`;
+}
+
+function renderStudioVisual() {
+  return `<div class="studio-hero" aria-hidden="true">
+          <div class="desk-card screen-card">
+            <div class="screen-top"></div>
+            <div class="wave-lines">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <div class="code-lines">
+              <span></span><span></span><span></span>
+            </div>
+          </div>
+          <div class="desk-card midi-card">
+            <div class="mini-keyboard"></div>
+            <div class="round-control"></div>
+          </div>
+          <div class="desk-card note-card">
+            <strong>OSS</strong>
+            <span>free tools</span>
+          </div>
+        </div>`;
+}
+
+function renderRouteBody(route, data, isToolPage) {
+  const showcase = showcaseCopy(data.locale);
+
+  if (route === "home") {
+    return `
+      <section class="showcase-band">
+        <div>
+          <h2>${escapeHtml(showcase.missionTitle)}</h2>
+          <p>${escapeHtml(showcase.missionText)}</p>
+        </div>
+        <div>
+          <h2>${escapeHtml(showcase.statusTitle)}</h2>
+          <p>${escapeHtml(showcase.statusText)}</p>
+        </div>
+      </section>
+
+      <section class="grid three">
+        ${toolCard("MIDI Piano Trainer", data.pages.midi.intro, "/tools/midi-piano-trainer/", showcase.statusStable, showcase.openPage)}
+        ${toolCard("Audio to MIDI Converter", data.pages.audio.intro, "/tools/audio-to-midi/", showcase.statusBeta, showcase.openPage)}
+        ${toolCard("Open Transcription Studio", data.pages.transcription.intro, "/tools/open-transcription-studio/", showcase.statusPlanned, showcase.openPage)}
+      </section>
+
+      <section class="grid two">
+        <article class="panel">
+          <h2>${escapeHtml(showcase.whyTitle)}</h2>
+          <p>${escapeHtml(showcase.whyText)}</p>
+        </article>
+        <article class="panel">
+          <h2>${escapeHtml(showcase.monetizationTitle)}</h2>
+          <p>${escapeHtml(showcase.monetizationText)}</p>
+        </article>
+      </section>
+
+      <section class="roadmap">
+        <h2>${escapeHtml(showcase.roadmapTitle)}</h2>
+        <ol>
+          ${showcase.roadmap.map((item) => `<li>${escapeHtml(item)}</li>`).join("\n          ")}
+        </ol>
+      </section>
+
+      <section class="panel">
+        <h2>${escapeHtml(showcase.earlyTitle)}</h2>
+        <p>${escapeHtml(showcase.earlyText)}</p>
+      </section>`;
+  }
+
+  if (route === "tools") {
+    return `
+      <section class="panel">
+        <h2>${escapeHtml(showcase.toolsTitle)}</h2>
+        <p>${escapeHtml(showcase.toolsText)}</p>
+      </section>
+      <section class="grid three">
+        ${toolCard("MIDI Piano Trainer", data.pages.midi.intro, "/tools/midi-piano-trainer/", showcase.statusStable, showcase.openPage)}
+        ${toolCard("Audio to MIDI Converter", data.pages.audio.intro, "/tools/audio-to-midi/", showcase.statusBeta, showcase.openPage)}
+        ${toolCard("Open Transcription Studio", data.pages.transcription.intro, "/tools/open-transcription-studio/", showcase.statusPlanned, showcase.openPage)}
+      </section>`;
+  }
+
+  if (route === "about") {
+    return `
+      <section class="grid two">
+        <article class="panel">
+          <h2>${escapeHtml(showcase.whyTitle)}</h2>
+          <p>${escapeHtml(showcase.whyText)}</p>
+        </article>
+        <article class="panel">
+          <h2>${escapeHtml(showcase.rulesTitle)}</h2>
+          <p>${escapeHtml(showcase.rulesText)}</p>
+        </article>
+        <article class="panel">
+          <h2>${escapeHtml(showcase.hostingTitle)}</h2>
+          <p>${escapeHtml(showcase.hostingText)}</p>
+        </article>
+        <article class="panel">
+          <h2>${escapeHtml(showcase.communityTitle)}</h2>
+          <p>${escapeHtml(showcase.communityText)}</p>
+        </article>
+      </section>
+      <section class="roadmap">
+        <h2>${escapeHtml(showcase.roadmapTitle)}</h2>
+        <ol>
+          ${showcase.roadmap.map((item) => `<li>${escapeHtml(item)}</li>`).join("\n          ")}
+        </ol>
+      </section>`;
+  }
+
+  if (route === "blog") {
+    return `
+      <section class="panel">
+        <h2>${escapeHtml(showcase.contentTitle)}</h2>
+        <p>${escapeHtml(showcase.contentText)}</p>
+      </section>
+      <section class="grid two">
+        ${articleCard("How to Convert Audio to MIDI", "A practical guide for clean source audio, backend limits, and opening generated MIDI in the trainer.")}
+        ${articleCard("Best Free MIDI Piano Practice Tools", "A comparison-style guide designed for real user intent and AdSense-safe original content.")}
+        ${articleCard("Privacy-Friendly Transcription Tools", "A future guide for creators who need subtitle exports without subscription lock-in.")}
+      </section>`;
+  }
+
+  if (isToolPage) {
+    const tool = toolCopy(route, data.locale);
+    return `
+      <section class="project-overview">
+        <article>
+          <span class="status">${escapeHtml(tool.status)}</span>
+          <h2>${escapeHtml(tool.snapshotTitle)}</h2>
+          <p>${escapeHtml(tool.snapshotText)}</p>
+        </article>
+        <article>
+          <h2>${escapeHtml(tool.currentTitle)}</h2>
+          <ul>
+            ${tool.current.map((item) => `<li>${escapeHtml(item)}</li>`).join("\n            ")}
+          </ul>
+        </article>
+        <article>
+          <h2>${escapeHtml(tool.nextTitle)}</h2>
+          <ul>
+            ${tool.next.map((item) => `<li>${escapeHtml(item)}</li>`).join("\n            ")}
+          </ul>
+        </article>
+      </section>
+      <section class="tool-actions">
+        <a class="button primary" href="${route === "transcription" ? "../" : site.midiUrl}">${escapeHtml(data.ctaTry)}</a>
+        <a class="button" href="${site.githubUrl}">${escapeHtml(data.ctaFeedback)}</a>
+        <a class="button" href="${site.githubUrl}">${escapeHtml(data.ctaStar)}</a>
+        <a class="button" href="${site.baseUrl}/donate/">${escapeHtml(data.ctaSupport)}</a>
+        <a class="button" href="mailto:?subject=Open Free Tools&body=${encodeURIComponent(site.baseUrl)}">${escapeHtml(data.ctaShare)}</a>
+      </section>
+      <section class="panel">
+        <h2>${escapeHtml(showcase.launchKitTitle)}</h2>
+        <p>${escapeHtml(showcase.launchKitText)}</p>
+      </section>
+      <section class="panel ad-note">
+        <h2>${escapeHtml(showcase.adsTitle)}</h2>
+        <p>${escapeHtml(showcase.adsText)}</p>
+      </section>`;
+  }
+
+  return `
+      <section class="panel">
+        <h2>${escapeHtml(showcase.rulesTitle)}</h2>
+        <p>${escapeHtml(showcase.rulesText)}</p>
+      </section>
+      <section class="panel">
+        <h2>${escapeHtml(showcase.monetizationTitle)}</h2>
+        <p>${escapeHtml(showcase.monetizationText)}</p>
+      </section>`;
+}
+
+function showcaseCopy(locale) {
+  const fallback = {
+    missionTitle: "A storefront for free tools",
+    missionText:
+      "This website is the public front door for the project: it explains what exists today, what is still experimental, and why the tools are open-source.",
+    statusTitle: "Honest project status",
+    statusText:
+      "MIDI Piano Trainer already works. Audio-to-MIDI is experimental. Open Transcription Studio is planned. The site is designed so users can see the whole direction before every feature is complete.",
+    whyTitle: "Why this matters",
+    whyText:
+      "Useful creative tools often become subscription-only. Open Free Tools keeps the core workflow free, documents limits clearly, and lets people self-host or fork projects when they need control.",
+    monetizationTitle: "How it can fund itself",
+    monetizationText:
+      "The project can use donations, sponsors, internal project promotion, and respectful ads on content pages. Ads should never block or confuse the working tool interface.",
+    roadmapTitle: "Roadmap",
+    roadmap: [
+      "Turn this hub into a complete multilingual storefront.",
+      "Polish MIDI Piano Trainer and the experimental Audio-to-MIDI workflow.",
+      "Create useful SEO guides before applying for AdSense.",
+      "Prepare feedback-first launch materials for Reddit, Discord, short videos, GitHub, Show HN, Product Hunt, and AlternativeTo.",
+      "Build Open Transcription Studio as a separate future tool.",
+    ],
+    earlyTitle: "Finding the first users",
+    earlyText:
+      "Early users should come from focused communities and short demos, not only from Google. Every launch post should ask for feedback, disclose authorship, and avoid spam.",
+    toolsTitle: "Current and planned tools",
+    toolsText:
+      "The catalog includes working, beta, and planned tools. The goal is to show the ecosystem clearly even while some apps are still under construction.",
+    rulesTitle: "Project rules",
+    rulesText:
+      "Core features stay free and open-source. The project does not copy paid services’ brands, logos, UI, assets, private APIs, or protected behavior.",
+    hostingTitle: "Hosting approach",
+    hostingText:
+      "Prefer static hosting and browser-side processing. Use optional backends only when heavy work cannot reasonably run in the browser.",
+    communityTitle: "Community approach",
+    communityText:
+      "The project should grow through feedback, GitHub issues, useful guides, short demos, and honest launch posts in relevant communities.",
+    contentTitle: "Content strategy",
+    contentText:
+      "Guides should solve real problems: converting audio to MIDI, practicing MIDI files, choosing free tools, and understanding privacy-friendly workflows.",
+    launchKitTitle: "Launch kit",
+    launchKitText:
+      "Each tool needs a short pitch, screenshots or video, community post drafts, a feedback issue, and a release note before a public push.",
+    adsTitle: "AdSense-safe placement",
+    adsText:
+      "Ads belong on guides, landing pages, and comparison content. They must not sit next to upload, play, convert, download, or editor controls.",
+    statusStable: "live",
+    statusBeta: "experimental",
+    statusPlanned: "planned",
+    openPage: "Open page",
+  };
+
+  if (locale === "ru") {
+    return {
+      ...fallback,
+      missionTitle: "Витрина бесплатных инструментов",
+      missionText:
+        "Этот сайт — публичный вход в проект: он объясняет, что уже есть, что пока экспериментальное и почему инструменты остаются open-source.",
+      statusTitle: "Честный статус проекта",
+      statusText:
+        "MIDI Piano Trainer уже работает. Audio-to-MIDI экспериментальный. Open Transcription Studio запланирован. Пользователь должен видеть весь проект, даже если часть функций еще в разработке.",
+      whyTitle: "Почему это важно",
+      whyText:
+        "Полезные creative-инструменты часто уходят в подписки. Open Free Tools оставляет core workflow бесплатным, честно показывает ограничения и позволяет форкать или self-host проекты.",
+      monetizationTitle: "Как проект может зарабатывать",
+      monetizationText:
+        "Монетизация идет через донаты, спонсоров, рекламу своих проектов и аккуратную рекламу на контентных страницах. Реклама не должна мешать рабочему интерфейсу.",
+      roadmapTitle: "Roadmap",
+      roadmap: [
+        "Сделать hub полноценной мультиязычной витриной.",
+        "Довести MIDI Piano Trainer и экспериментальный Audio-to-MIDI workflow.",
+        "Создать полезные SEO-гайды до подачи в AdSense.",
+        "Подготовить feedback-first материалы для Reddit, Discord, коротких видео, GitHub, Show HN, Product Hunt и AlternativeTo.",
+        "Создать Open Transcription Studio как отдельный будущий инструмент.",
+      ],
+      earlyTitle: "Первые пользователи",
+      earlyText:
+        "Первые пользователи должны прийти из нишевых сообществ и коротких демо, а не только из Google. Каждый пост должен просить фидбек, честно раскрывать авторство и не выглядеть как спам.",
+      toolsTitle: "Текущие и будущие инструменты",
+      toolsText:
+        "Каталог показывает рабочие, экспериментальные и запланированные инструменты, чтобы пользователь сразу видел экосистему проекта.",
+      rulesTitle: "Правила проекта",
+      rulesText:
+        "Core-функции остаются бесплатными и open-source. Проект не копирует бренды, логотипы, UI, ассеты, private API и защищенное поведение платных сервисов.",
+      hostingTitle: "Подход к хостингу",
+      hostingText:
+        "Предпочитаем статический хостинг и обработку в браузере. Backend используется optional только там, где тяжелую обработку нельзя разумно сделать локально.",
+      communityTitle: "Подход к комьюнити",
+      communityText:
+        "Проект должен расти через фидбек, GitHub issues, полезные гайды, короткие демо и честные посты в релевантных сообществах.",
+      contentTitle: "Контент-стратегия",
+      contentText:
+        "Гайды должны решать реальные задачи: конвертация аудио в MIDI, тренировка MIDI-файлов, выбор бесплатных инструментов и privacy-friendly workflow.",
+      launchKitTitle: "Launch kit",
+      launchKitText:
+        "Для каждого инструмента нужны короткий pitch, screenshots/video, тексты для сообществ, feedback issue и release note.",
+      adsTitle: "Безопасное размещение рекламы",
+      adsText:
+        "Реклама подходит для гайдов, landing pages и comparison content. Ее нельзя ставить рядом с Upload, Play, Convert, Download или редактором.",
+      statusStable: "работает",
+      statusBeta: "эксперимент",
+      statusPlanned: "запланировано",
+      openPage: "Открыть страницу",
+    };
+  }
+
+  return fallback;
+}
+
+function toolCopy(route, locale) {
+  const ru = locale === "ru";
+  const items = {
+    midi: {
+      status: ru ? "Первый рабочий инструмент" : "First live tool",
+      snapshotTitle: ru ? "Что это" : "What it is",
+      snapshotText: ru
+        ? "Браузерный тренажер пианино: пользователь загружает MIDI-файл, видит падающие ноты и играет их на клавиатуре ПК."
+        : "A browser piano trainer: users upload a MIDI file, follow falling notes, and play with a PC keyboard.",
+      currentTitle: ru ? "Уже есть" : "Already available",
+      current: ru
+        ? ["Загрузка MIDI в браузере", "Падающие ноты", "Выбор дорожек", "Оценка попаданий", "Мультиязычные страницы"]
+        : ["Browser MIDI upload", "Falling notes", "Track selection", "Hit and miss feedback", "Multilingual pages"],
+      nextTitle: ru ? "Следующее" : "Next",
+      next: ru
+        ? ["Улучшить onboarding", "Добавить демо-материалы", "Подготовить launch kit", "Связать с SEO-гайдами"]
+        : ["Improve onboarding", "Add demo assets", "Prepare launch kit", "Connect SEO guides"],
+    },
+    audio: {
+      status: ru ? "Экспериментальный инструмент" : "Experimental tool",
+      snapshotTitle: ru ? "Что это" : "What it is",
+      snapshotText: ru
+        ? "Конвертер своих аудиофайлов в MIDI через optional backend. Результат можно скачать или открыть в MIDI Piano Trainer."
+        : "A converter for user-owned audio files using an optional backend. The generated MIDI can be downloaded or opened in MIDI Piano Trainer.",
+      currentTitle: ru ? "Уже есть" : "Already available",
+      current: ru
+        ? ["Загрузка MP3/WAV/OGG/FLAC", "Настраиваемый backend URL", "Проверка backend health", "Скачивание MIDI", "Передача MIDI в тренажер"]
+        : ["MP3/WAV/OGG/FLAC upload", "Configurable backend URL", "Backend health check", "MIDI download", "Open generated MIDI in trainer"],
+      nextTitle: ru ? "Следующее" : "Next",
+      next: ru
+        ? ["Объяснить backend простым языком", "Добавить troubleshooting", "Показать примеры хороших аудиофайлов", "Подготовить короткое demo video"]
+        : ["Explain backend setup clearly", "Add troubleshooting", "Show good audio examples", "Prepare a short demo video"],
+    },
+    transcription: {
+      status: ru ? "Запланированный инструмент" : "Planned tool",
+      snapshotTitle: ru ? "Что это будет" : "What it will be",
+      snapshotText: ru
+        ? "Будущий open-source редактор транскрипций для аудио и видео с privacy-first подходом и экспортом субтитров."
+        : "A future open-source transcription editor for audio and video with a privacy-first workflow and subtitle exports.",
+      currentTitle: ru ? "Планируемые функции" : "Planned features",
+      current: ru
+        ? ["Загрузка аудио/видео", "Редактор текста", "Таймкоды", "Экспорт TXT/SRT/VTT", "Локальное сохранение проекта"]
+        : ["Audio/video upload", "Transcript editor", "Timestamps", "TXT/SRT/VTT export", "Local project saving"],
+      nextTitle: ru ? "Следующее" : "Next",
+      next: ru
+        ? ["Описать MVP", "Выбрать local-first подход", "Не копировать бренд и UI платных сервисов", "Сделать отдельный проект"]
+        : ["Define MVP", "Choose local-first approach", "Avoid copying paid-service brand or UI", "Create a separate project"],
+    },
+  };
+
+  return items[route] || items.midi;
+}
+
+function toolCard(title, text, href, status, linkLabel = "Open page") {
+  return `<article class="card">
+          <span class="status">${status}</span>
+          <h2>${escapeHtml(title)}</h2>
+          <p>${escapeHtml(text)}</p>
+          <a href="${site.baseUrl}${href}">${escapeHtml(linkLabel)}</a>
+        </article>`;
+}
+
+function articleCard(title, text) {
+  return `<article class="card">
+          <h2>${escapeHtml(title)}</h2>
+          <p>${escapeHtml(text)}</p>
+          <a href="#">Planned article</a>
+        </article>`;
+}
+
+function canonical(path) {
+  return `${site.baseUrl}/${path ? `${path.replaceAll("\\", "/")}/` : ""}`;
+}
+
+function relativePrefix(path) {
+  if (!path) return "";
+  return "../".repeat(path.replaceAll("\\", "/").split("/").filter(Boolean).length);
+}
+
+function alternateLinks(route) {
+  const routePath = routeMap[route];
+  const lines = [`    <link rel="alternate" hreflang="x-default" href="${canonical(routePath)}" />`];
+  for (const code of languageCodes) {
+    lines.push(`    <link rel="alternate" hreflang="${code}" href="${canonical(join(code, routePath).replaceAll("\\", "/"))}" />`);
+  }
+  return lines.join("\n");
+}
+
+function buildSitemap() {
+  const urls = generatedPaths.map((path) => `  <url>
+    <loc>${canonical(path)}</loc>
+  </url>`).join("\n");
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls}
+</urlset>
+`;
+}
+
+function escapeHtml(value) {
+  return value.replace(/[&<>"']/g, (char) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;",
+  })[char]);
+}
+
+const styles = `:root {
+  color-scheme: light;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #f6faf8;
+  color: #17211d;
+  --ink: #17211d;
+  --muted: #5b6a63;
+  --panel: #ffffff;
+  --line: #dce5e1;
+  --accent: #087f68;
+  --accent-dark: #075f50;
+  --soft: #eaf5f1;
+  --surface: #f6faf8;
+  --surface-2: #edf5f1;
+  --shadow: rgba(23, 33, 29, 0.1);
+  --hero-glow: rgba(8, 127, 104, 0.12);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  background: #0f1714;
+  color: #edf7f3;
+  --ink: #edf7f3;
+  --muted: #9eb0aa;
+  --panel: #15211d;
+  --line: #2d3d37;
+  --accent: #57d6b5;
+  --accent-dark: #8ee8c7;
+  --soft: #18332b;
+  --surface: #0f1714;
+  --surface-2: #111d19;
+  --shadow: rgba(0, 0, 0, 0.28);
+  --hero-glow: rgba(87, 214, 181, 0.14);
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    radial-gradient(circle at 80% 8%, var(--hero-glow), transparent 26rem),
+    var(--surface);
+}
+a { color: var(--accent); font-weight: 700; }
+.site-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 18px;
+  align-items: center;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 18px;
+}
+.brand { display: inline-flex; gap: 10px; align-items: center; color: var(--ink); text-decoration: none; }
+.brand span {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+}
+nav { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+nav a {
+  border-radius: 8px;
+  padding: 8px 10px;
+  color: var(--muted);
+  text-decoration: none;
+}
+nav a:hover {
+  background: var(--soft);
+  color: var(--accent);
+}
+.header-controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-self: end;
+}
+.theme-toggle,
+.language-menu summary {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  color: var(--ink);
+  cursor: pointer;
+}
+.theme-toggle {
+  width: 44px;
+  padding: 0;
+  font: inherit;
+  font-size: 18px;
+}
+.language-menu {
+  position: relative;
+}
+.language-menu summary {
+  width: 58px;
+  gap: 4px;
+  list-style: none;
+}
+.language-menu summary::-webkit-details-marker { display: none; }
+.flag {
+  font-size: 22px;
+  line-height: 1;
+}
+.chevron {
+  color: var(--muted);
+  font-size: 12px;
+}
+.language-list {
+  position: absolute;
+  z-index: 10;
+  top: calc(100% + 8px);
+  right: 0;
+  display: grid;
+  min-width: 190px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 6px;
+  background: var(--panel);
+  box-shadow: 0 18px 40px var(--shadow);
+}
+.language-list a {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  border-radius: 8px;
+  padding: 9px 10px;
+  color: var(--ink);
+  text-decoration: none;
+}
+.language-list a:hover,
+.language-list a[aria-current="true"] {
+  background: var(--soft);
+  color: var(--accent);
+}
+main { max-width: 1180px; margin: 0 auto; padding: 18px; }
+.hero {
+  padding: 58px 0 34px;
+}
+.hero-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.06fr) minmax(330px, .94fr);
+  gap: 34px;
+  align-items: center;
+}
+.hero-copy {
+  max-width: 880px;
+}
+.eyebrow {
+  margin: 0 0 10px;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+h1 { margin: 0; font-size: clamp(34px, 7vw, 68px); line-height: 1; letter-spacing: 0; }
+h2 { margin: 0 0 10px; font-size: 22px; }
+p { color: var(--muted); line-height: 1.65; }
+.hero p:not(.eyebrow) { max-width: 760px; font-size: 18px; }
+.hero-actions, .tool-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.button {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0 14px;
+  background: var(--panel);
+  color: var(--ink);
+  text-decoration: none;
+}
+.button.primary { border-color: var(--accent); background: var(--accent); color: #fff; }
+.studio-hero {
+  position: relative;
+  min-height: 370px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, var(--panel), var(--surface-2));
+  box-shadow: 0 22px 60px var(--shadow);
+}
+.studio-hero::before {
+  content: "";
+  position: absolute;
+  inset: 28px;
+  border-radius: 8px;
+  background:
+    linear-gradient(90deg, transparent 0 58%, rgba(8, 127, 104, 0.12) 58% 100%),
+    repeating-linear-gradient(90deg, transparent 0 46px, rgba(8, 127, 104, 0.08) 46px 48px);
+}
+.desk-card {
+  position: absolute;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: 0 16px 34px var(--shadow);
+}
+.screen-card {
+  inset: 44px 42px 126px;
+  padding: 16px;
+}
+.screen-top {
+  height: 9px;
+  width: 86px;
+  border-radius: 999px;
+  background: var(--soft);
+}
+.wave-lines {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  align-items: end;
+  height: 82px;
+  margin-top: 24px;
+}
+.wave-lines span {
+  display: block;
+  border-radius: 999px 999px 8px 8px;
+  background: var(--accent);
+}
+.wave-lines span:nth-child(1) { height: 32px; opacity: .45; }
+.wave-lines span:nth-child(2) { height: 62px; opacity: .8; }
+.wave-lines span:nth-child(3) { height: 44px; opacity: .55; }
+.wave-lines span:nth-child(4) { height: 76px; opacity: .95; }
+.wave-lines span:nth-child(5) { height: 38px; opacity: .5; }
+.code-lines {
+  display: grid;
+  gap: 8px;
+  margin-top: 16px;
+}
+.code-lines span {
+  display: block;
+  height: 9px;
+  border-radius: 999px;
+  background: var(--soft);
+}
+.code-lines span:nth-child(2) { width: 78%; }
+.code-lines span:nth-child(3) { width: 52%; }
+.midi-card {
+  right: 44px;
+  bottom: 42px;
+  width: min(68%, 330px);
+  height: 74px;
+  padding: 14px;
+}
+.mini-keyboard {
+  height: 38px;
+  border-radius: 8px;
+  background:
+    repeating-linear-gradient(90deg, #fff 0 24px, #dce5e1 24px 26px),
+    #fff;
+}
+.round-control {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.note-card {
+  left: 44px;
+  bottom: 54px;
+  display: grid;
+  gap: 2px;
+  min-width: 118px;
+  padding: 14px;
+}
+.note-card strong {
+  font-size: 28px;
+}
+.note-card span {
+  color: var(--muted);
+  font-weight: 700;
+}
+.grid { display: grid; gap: 14px; margin: 20px 0; }
+.grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.showcase-band {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+  gap: 14px;
+  margin: 8px 0 20px;
+}
+.card, .panel {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 18px;
+  background: var(--panel);
+}
+.showcase-band > div,
+.roadmap,
+.project-overview article {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 18px;
+  background: var(--panel);
+}
+.card p, .panel p { margin-bottom: 0; }
+.roadmap { margin: 20px 0; }
+.roadmap ol { margin: 0; padding-left: 22px; color: var(--muted); line-height: 1.7; }
+.project-overview {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 14px;
+  margin: 10px 0 18px;
+}
+.project-overview ul {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.status {
+  display: inline-flex;
+  margin-bottom: 12px;
+  border-radius: 999px;
+  padding: 5px 9px;
+  background: var(--soft);
+  color: var(--accent-dark);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.ad-note { background: #fbfdfc; }
+:root[data-theme="dark"] .ad-note { background: #13201c; }
+footer {
+  max-width: 1180px;
+  margin: 30px auto 0;
+  border-top: 1px solid var(--line);
+  padding: 18px;
+}
+footer p { margin: 6px 0; font-size: 14px; }
+@media (max-width: 840px) {
+  .site-header { grid-template-columns: 1fr; }
+  .header-controls { justify-self: start; }
+  .language-list { right: auto; left: 0; }
+  .hero-split, .grid.three, .grid.two, .showcase-band, .project-overview { grid-template-columns: 1fr; }
+  .hero { padding-top: 28px; }
+  .studio-hero { min-height: 320px; }
+}
+`;
+
+await writeStaticAssets();
+
+for (const route of rootRoutes) {
+  await writePage(route, "en", routeMap[route]);
+}
+
+for (const lang of languageCodes) {
+  for (const route of rootRoutes) {
+    await writePage(route, lang, join(lang, routeMap[route]));
+  }
+}
+
+await writeFile("sitemap.xml", buildSitemap(), "utf8");
+await writeFile("robots.txt", `User-agent: *\nAllow: /\n\nSitemap: ${site.baseUrl}/sitemap.xml\n`, "utf8");

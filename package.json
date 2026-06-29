@@ -1,0 +1,10 @@
+{
+  "name": "open-free-tools",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/generate-site.mjs",
+    "check": "node scripts/verify-site.mjs"
+  }
+}

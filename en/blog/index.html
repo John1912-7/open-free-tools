@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+    <title>Guides for Free Music and Transcription Tools - Open Free Tools</title>
+    <meta name="description" content="SEO-friendly guides about MIDI practice, audio-to-MIDI conversion, open-source transcription, and privacy-friendly workflows." />
+    <link rel="canonical" href="https://john1912-7.github.io/open-free-tools/en/blog/" />
+    <link rel="alternate" hreflang="x-default" href="https://john1912-7.github.io/open-free-tools/blog/" />
+    <link rel="alternate" hreflang="en" href="https://john1912-7.github.io/open-free-tools/en/blog/" />
+    <link rel="alternate" hreflang="ru" href="https://john1912-7.github.io/open-free-tools/ru/blog/" />
+    <link rel="alternate" hreflang="de" href="https://john1912-7.github.io/open-free-tools/de/blog/" />
+    <link rel="alternate" hreflang="es" href="https://john1912-7.github.io/open-free-tools/es/blog/" />
+    <link rel="alternate" hreflang="hy" href="https://john1912-7.github.io/open-free-tools/hy/blog/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en" />
+    <meta property="og:title" content="Guides for Free Music and Transcription Tools - Open Free Tools" />
+    <meta property="og:description" content="SEO-friendly guides about MIDI practice, audio-to-MIDI conversion, open-source transcription, and privacy-friendly workflows." />
+    <meta property="og:url" content="https://john1912-7.github.io/open-free-tools/en/blog/" />
+    <meta property="og:site_name" content="Open Free Tools" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Guides for Free Music and Transcription Tools - Open Free Tools" />
+    <meta name="twitter:description" content="SEO-friendly guides about MIDI practice, audio-to-MIDI conversion, open-source transcription, and privacy-friendly workflows." />
+    <script>
+      (() => {
+        const saved = localStorage.getItem("oft-theme");
+        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.dataset.theme = saved || (prefersDark ? "dark" : "light");
+      })();
+    </script>
+    <link rel="stylesheet" href="../../assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../../en/">
+        <span>OFT</span>
+        <strong>Open Free Tools</strong>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="../../en/tools/">Tools</a>
+        <a href="../../en/about/">About</a>
+        <a href="../../en/blog/">Blog</a>
+        <a href="../../en/donate/">Donate</a>
+        <a href="../../en/contribute/">Contribute</a>
+        <a href="../../en/legal/">Legal</a>
+        <a href="../../en/contact/">Contact</a>
+      </nav>
+      <div class="header-controls">
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle dark or light theme">
+          <span data-theme-icon>◐</span>
+        </button>
+        <details class="language-menu">
+          <summary aria-label="Change language">
+            <span class="flag">🇬🇧</span>
+            <span class="chevron" aria-hidden="true">▾</span>
+          </summary>
+          <div class="language-list" aria-label="Languages">
+          <a href="../../en/blog/" aria-current="true"><span class="flag">🇬🇧</span><span>English</span></a>
+          <a href="../../ru/blog/"><span class="flag">🇷🇺</span><span>Русский</span></a>
+          <a href="../../de/blog/"><span class="flag">🇩🇪</span><span>Deutsch</span></a>
+          <a href="../../es/blog/"><span class="flag">🇪🇸</span><span>Español</span></a>
+          <a href="../../hy/blog/"><span class="flag">🇦🇲</span><span>Հայերեն</span></a>
+          </div>
+        </details>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Free · Open Source · Browser First</p>
+          <h1>Guides and build notes</h1>
+          <p>Useful articles will explain real workflows, not thin content: how to convert audio to MIDI, practice MIDI files, and build open-source transcription workflows.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="https://john1912-7.github.io/midi-piano-trainer/">Try the tool</a>
+            <a class="button" href="https://github.com/john1912-7">Star on GitHub</a>
+          </div>
+        </div>
+        
+      </section>
+
+
+      <section class="panel">
+        <h2>Content strategy</h2>
+        <p>Guides should solve real problems: converting audio to MIDI, practicing MIDI files, choosing free tools, and understanding privacy-friendly workflows.</p>
+      </section>
+      <section class="grid two">
+        <article class="card">
+          <h2>How to Convert Audio to MIDI</h2>
+          <p>A practical guide for clean source audio, backend limits, and opening generated MIDI in the trainer.</p>
+          <a href="#">Planned article</a>
+        </article>
+        <article class="card">
+          <h2>Best Free MIDI Piano Practice Tools</h2>
+          <p>A comparison-style guide designed for real user intent and AdSense-safe original content.</p>
+          <a href="#">Planned article</a>
+        </article>
+        <article class="card">
+          <h2>Privacy-Friendly Transcription Tools</h2>
+          <p>A future guide for creators who need subtitle exports without subscription lock-in.</p>
+          <a href="#">Planned article</a>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <p>Open Free Tools is an independent open-source project. No affiliation with paid services mentioned in comparisons.</p>
+      <p><a href="../../en/privacy/">Privacy</a> · <a href="../../en/legal/">Legal</a> · <a href="../../en/contact/">Contact</a></p>
+    </footer>
+    <script>
+      (() => {
+        const button = document.querySelector("[data-theme-toggle]");
+        const icon = document.querySelector("[data-theme-icon]");
+        const setIcon = () => {
+          const theme = document.documentElement.dataset.theme || "light";
+          icon.textContent = theme === "dark" ? "☀" : "☾";
+          button.setAttribute("aria-label", theme === "dark" ? "Switch to light theme" : "Switch to dark theme");
+        };
+
+        setIcon();
+        button.addEventListener("click", () => {
+          const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+          document.documentElement.dataset.theme = next;
+          localStorage.setItem("oft-theme", next);
+          setIcon();
+        });
+      })();
+    </script>
+  </body>
+</html>
