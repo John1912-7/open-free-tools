@@ -30,9 +30,12 @@ Language targeting uses language-only `hreflang` values: `en`, `ru`, `de`, `es`,
 
 ```bash
 npm run build
+npm run dev
+npm run check
 ```
 
 The generator writes static HTML pages, `sitemap.xml`, `robots.txt`, and shared CSS.
+Use `npm run dev` for a local preview at `http://127.0.0.1:4273/`.
 
 ## GitHub Pages
 

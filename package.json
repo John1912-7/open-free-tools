@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "node scripts/generate-site.mjs",
+    "dev": "set PORT=4273&& node ../midi-piano-trainer/tests/static-server.mjs",
     "check": "node scripts/verify-site.mjs"
   }
 }
