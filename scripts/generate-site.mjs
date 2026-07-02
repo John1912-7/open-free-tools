@@ -72,6 +72,30 @@ const languages = {
         intro:
           "Useful articles will explain real workflows, not thin content: how to convert audio to MIDI, practice MIDI files, and build open-source transcription workflows.",
       },
+      freeMidiGuide: {
+        title: "Free MIDI Piano Trainer Online - Practice MIDI in Your Browser",
+        description:
+          "Learn how the free MIDI Piano Trainer helps you upload MIDI files, follow falling notes, choose tracks, and practice piano from a browser.",
+        h1: "Free MIDI Piano Trainer Online Guide",
+        intro:
+          "A practical guide to using MIDI Piano Trainer as a free browser-based piano practice tool for your own MIDI files.",
+      },
+      freeAudioGuide: {
+        title: "Free Audio to MIDI Converter Online - Open Free Tools Guide",
+        description:
+          "Understand what the free Audio to MIDI Converter can do, which audio works best, and how to download or open generated MIDI files.",
+        h1: "Free Audio to MIDI Converter Guide",
+        intro:
+          "A plain-language guide to the beta audio-to-MIDI workflow, realistic quality expectations, and the best source audio to try first.",
+      },
+      howConvertGuide: {
+        title: "How to Convert Audio to MIDI - Step by Step Guide",
+        description:
+          "Step-by-step guide for converting your own audio to MIDI, preparing clean piano recordings, waiting for backend processing, and checking results.",
+        h1: "How to Convert Audio to MIDI",
+        intro:
+          "Follow this workflow to prepare an audio file, convert it to MIDI, download the result, and open it in MIDI Piano Trainer.",
+      },
       donate: {
         title: "Donate and Support Open Free Tools",
         description:
@@ -108,7 +132,7 @@ const languages = {
         title: "Contact Open Free Tools",
         description:
           "Contact Open Free Tools for bug reports, feedback, launch suggestions, partnerships, and legal requests.",
-        h1: "Contact",
+        h1: "Contact Open Free Tools",
         intro:
           "Use GitHub issues for product feedback and bug reports. Add a public contact email before applying for AdSense.",
       },
@@ -171,6 +195,30 @@ const languages = {
         h1: "Гайды и заметки разработки",
         intro: "Статьи должны решать реальные задачи: как конвертировать аудио в MIDI, тренироваться по MIDI и делать транскрипции.",
       },
+      freeMidiGuide: {
+        title: "Бесплатный MIDI Piano Trainer онлайн - практика в браузере",
+        description:
+          "Как бесплатный MIDI Piano Trainer помогает загружать MIDI, видеть падающие ноты, выбирать дорожки и тренироваться в браузере.",
+        h1: "Бесплатный MIDI Piano Trainer онлайн - гайд",
+        intro:
+          "Практический гайд по MIDI Piano Trainer: бесплатному браузерному тренажеру для занятий по своим MIDI-файлам.",
+      },
+      freeAudioGuide: {
+        title: "Бесплатный конвертер аудио в MIDI онлайн - гайд",
+        description:
+          "Что умеет бесплатный Audio to MIDI Converter, какие аудиофайлы подходят лучше всего и как скачать или открыть MIDI результат.",
+        h1: "Бесплатный конвертер аудио в MIDI - гайд",
+        intro:
+          "Простой гайд по beta audio-to-MIDI workflow, ожиданиям по качеству и подготовке хорошего исходного аудио.",
+      },
+      howConvertGuide: {
+        title: "Как конвертировать аудио в MIDI - пошаговый гайд",
+        description:
+          "Пошаговая инструкция: подготовьте свое аудио, запустите конвертацию в MIDI, дождитесь backend-обработки и проверьте результат.",
+        h1: "Как конвертировать аудио в MIDI",
+        intro:
+          "Пошаговый workflow: загрузить аудиофайл, получить MIDI, скачать результат и открыть его в MIDI Piano Trainer.",
+      },
       donate: {
         title: "Поддержать Open Free Tools",
         description: "Поддержите бесплатные open-source инструменты донатами, GitHub Sponsors, тестами и распространением.",
@@ -198,7 +246,7 @@ const languages = {
       contact: {
         title: "Контакт - Open Free Tools",
         description: "Связь с Open Free Tools для багов, фидбека, идей запуска, партнерств и юридических запросов.",
-        h1: "Контакт",
+        h1: "Контакт Open Free Tools",
         intro: "Для фидбека и багов используйте GitHub issues. Перед AdSense нужно добавить публичный email.",
       },
     },
@@ -256,6 +304,30 @@ const languages = {
         h1: "Guides und Build Notes",
         intro: "Artikel sollen echte Workflows erklaeren statt duennen SEO-Content zu erzeugen.",
       },
+      freeMidiGuide: {
+        title: "Kostenloser MIDI Piano Trainer online - im Browser ueben",
+        description:
+          "So hilft der kostenlose MIDI Piano Trainer beim Hochladen von MIDI-Dateien, fallenden Noten, Spurauswahl und Browser-Piano-Uebung.",
+        h1: "Kostenloser MIDI Piano Trainer online Guide",
+        intro:
+          "Ein praktischer Guide zum MIDI Piano Trainer als kostenlosem Browser-Tool fuer eigene MIDI-Dateien.",
+      },
+      freeAudioGuide: {
+        title: "Kostenloser Audio zu MIDI Converter online - Guide",
+        description:
+          "Was der kostenlose Audio-to-MIDI Converter kann, welche Aufnahmen am besten funktionieren und wie MIDI-Ergebnisse geoeffnet werden.",
+        h1: "Kostenloser Audio zu MIDI Converter Guide",
+        intro:
+          "Ein klarer Guide zum beta Audio-to-MIDI Workflow, realistischen Qualitaetserwartungen und guten Ausgangsaufnahmen.",
+      },
+      howConvertGuide: {
+        title: "Audio in MIDI umwandeln - Schritt fuer Schritt",
+        description:
+          "Schritt-fuer-Schritt-Anleitung zum Vorbereiten eigener Audiodateien, Starten der MIDI-Konvertierung und Pruefen des Ergebnisses.",
+        h1: "Audio in MIDI umwandeln",
+        intro:
+          "Dieser Workflow zeigt, wie man Audio hochlaedt, MIDI erzeugt, herunterlaedt und im MIDI Piano Trainer oeffnet.",
+      },
       donate: {
         title: "Open Free Tools unterstuetzen",
         description: "Unterstuetze kostenlose Open-Source-Tools mit Spenden, Feedback, Tests und Teilen.",
@@ -283,7 +355,7 @@ const languages = {
       contact: {
         title: "Kontakt - Open Free Tools",
         description: "Kontakt fuer Feedback, Bugs, Launch-Ideen, Partnerschaften und rechtliche Anfragen.",
-        h1: "Kontakt",
+        h1: "Kontakt Open Free Tools",
         intro: "Nutze GitHub Issues fuer Feedback und Bug Reports. Eine oeffentliche E-Mail folgt vor AdSense.",
       },
     },
@@ -341,6 +413,30 @@ const languages = {
         h1: "Guias y notas de desarrollo",
         intro: "Los articulos deben resolver flujos reales, no crear contenido SEO vacio.",
       },
+      freeMidiGuide: {
+        title: "MIDI Piano Trainer gratis online - practica en el navegador",
+        description:
+          "Como el MIDI Piano Trainer gratis ayuda a subir MIDI, seguir notas descendentes, elegir pistas y practicar piano desde el navegador.",
+        h1: "MIDI Piano Trainer gratis online - guia",
+        intro:
+          "Una guia practica para usar MIDI Piano Trainer como herramienta gratis de practica con tus propios archivos MIDI.",
+      },
+      freeAudioGuide: {
+        title: "Conversor audio a MIDI gratis online - guia",
+        description:
+          "Que puede hacer el conversor gratis de audio a MIDI, que audio funciona mejor y como descargar o abrir el MIDI generado.",
+        h1: "Conversor audio a MIDI gratis - guia",
+        intro:
+          "Guia sencilla del flujo beta audio-to-MIDI, expectativas realistas de calidad y buen audio de origen.",
+      },
+      howConvertGuide: {
+        title: "Como convertir audio a MIDI - guia paso a paso",
+        description:
+          "Guia paso a paso para preparar audio propio, convertirlo a MIDI, esperar el procesamiento y revisar el resultado.",
+        h1: "Como convertir audio a MIDI",
+        intro:
+          "Este workflow muestra como subir audio, generar MIDI, descargarlo y abrirlo en MIDI Piano Trainer.",
+      },
       donate: {
         title: "Donar a Open Free Tools",
         description: "Apoya herramientas open-source gratis con donaciones, feedback, pruebas y difusion.",
@@ -368,7 +464,7 @@ const languages = {
       contact: {
         title: "Contacto - Open Free Tools",
         description: "Contacto para feedback, bugs, ideas de lanzamiento, partners y solicitudes legales.",
-        h1: "Contacto",
+        h1: "Contacto Open Free Tools",
         intro: "Usa GitHub Issues para feedback y bugs. Se anadira un email publico antes de AdSense.",
       },
     },
@@ -410,13 +506,13 @@ const languages = {
       },
       audio: {
         title: "Անվճար Audio to MIDI Converter",
-        description: "Ձեր սեփական աուդիո ֆայլերը վերածեք MIDI-ի optional backend-ի միջոցով:",
+        description: "Ձեր սեփական աուդիո ֆայլերը վերածեք MIDI-ի optional backend-ի միջոցով եւ բացեք արդյունքը trainer-ում:",
         h1: "Անվճար Audio to MIDI Converter",
         intro: "Audio-to-MIDI-ն beta է. վերբեռնեք ձեր ֆայլը, ստացեք MIDI եւ բացեք trainer-ում:",
       },
       transcription: {
         title: "Open Source Transcription Studio",
-        description: "Անվճար transcription editor-ի պլան՝ TXT, SRT եւ VTT export-ով:",
+        description: "Անվճար open-source transcription editor-ի պլան՝ TXT, SRT եւ VTT export-ով ու privacy-first workflow-ով:",
         h1: "Open Source Transcription Studio",
         intro: "Ապագա privacy-first editor աուդիո եւ վիդեո transcription-ի համար՝ timestamps եւ subtitles export:",
       },
@@ -425,6 +521,30 @@ const languages = {
         description: "Օգտակար հոդվածներ MIDI-ի, audio-to-MIDI-ի եւ open-source transcription-ի մասին:",
         h1: "Ուղեցույցներ եւ զարգացման նշումներ",
         intro: "Հոդվածները պետք է լուծեն իրական խնդիրներ, ոչ թե լինեն դատարկ SEO էջեր:",
+      },
+      freeMidiGuide: {
+        title: "Անվճար MIDI Piano Trainer առցանց - վարժանք browser-ում",
+        description:
+          "Ինչպես անվճար MIDI Piano Trainer-ը օգնում է բեռնել MIDI ֆայլեր, հետեւել ընկնող նոտաներին եւ վարժվել browser-ում:",
+        h1: "Անվճար MIDI Piano Trainer առցանց ուղեցույց",
+        intro:
+          "Գործնական ուղեցույց MIDI Piano Trainer-ի մասին՝ անվճար browser գործիք սեփական MIDI ֆայլերով վարժվելու համար:",
+      },
+      freeAudioGuide: {
+        title: "Անվճար Audio to MIDI Converter առցանց - ուղեցույց",
+        description:
+          "Ինչ կարող է անել անվճար Audio to MIDI Converter-ը, որ audio-ն է ավելի լավ աշխատում եւ ինչպես ներբեռնել MIDI արդյունքը:",
+        h1: "Անվճար Audio to MIDI Converter ուղեցույց",
+        intro:
+          "Պարզ ուղեցույց beta audio-to-MIDI workflow-ի, որակի սպասելիքների եւ լավ source audio պատրաստելու մասին:",
+      },
+      howConvertGuide: {
+        title: "Ինչպես փոխարկել audio-ն MIDI-ի - քայլ առ քայլ",
+        description:
+          "Քայլ առ քայլ ուղեցույց՝ պատրաստել սեփական audio-ն, փոխարկել MIDI-ի, սպասել backend processing-ին եւ ստուգել արդյունքը:",
+        h1: "Ինչպես փոխարկել audio-ն MIDI-ի",
+        intro:
+          "Այս workflow-ը ցույց է տալիս՝ ինչպես բեռնել audio, ստանալ MIDI, ներբեռնել արդյունքը եւ բացել MIDI Piano Trainer-ում:",
       },
       donate: {
         title: "Աջակցել Open Free Tools-ին",
@@ -453,7 +573,7 @@ const languages = {
       contact: {
         title: "Կապ - Open Free Tools",
         description: "Կապ feedback-ի, bug reports-ի, launch ideas-ի եւ իրավական հարցերի համար:",
-        h1: "Կապ",
+        h1: "Կապ Open Free Tools",
         intro: "Feedback-ի եւ bugs-ի համար օգտագործեք GitHub Issues: Public email կավելացվի AdSense-ից առաջ:",
       },
     },
@@ -473,6 +593,9 @@ const routeMap = {
   audio: "tools/audio-to-midi",
   transcription: "tools/open-transcription-studio",
   blog: "blog",
+  freeMidiGuide: "blog/free-midi-piano-trainer",
+  freeAudioGuide: "blog/free-audio-to-midi-converter",
+  howConvertGuide: "blog/how-to-convert-audio-to-midi",
   donate: "donate",
   contribute: "contribute",
   privacy: "privacy",
@@ -480,7 +603,24 @@ const routeMap = {
   contact: "contact",
 };
 
-const rootRoutes = ["home", "tools", "about", "midi", "audio", "transcription", "blog", "donate", "contribute", "privacy", "legal", "contact"];
+const rootRoutes = [
+  "home",
+  "tools",
+  "about",
+  "midi",
+  "audio",
+  "transcription",
+  "blog",
+  "freeMidiGuide",
+  "freeAudioGuide",
+  "howConvertGuide",
+  "donate",
+  "contribute",
+  "privacy",
+  "legal",
+  "contact",
+];
+const seoGuideRoutes = ["freeMidiGuide", "freeAudioGuide", "howConvertGuide"];
 const languageCodes = Object.keys(languages);
 const generatedPaths = [];
 
@@ -741,16 +881,19 @@ function renderRouteBody(route, data, isToolPage) {
   }
 
   if (route === "blog") {
+    const cards = blogGuideCards(data.locale);
     return `
       <section class="panel">
         <h2>${escapeHtml(showcase.contentTitle)}</h2>
         <p>${escapeHtml(showcase.contentText)}</p>
       </section>
       <section class="grid two">
-        ${articleCard("How to Convert Audio to MIDI", "A practical guide for clean source audio, backend limits, and opening generated MIDI in the trainer.")}
-        ${articleCard("Best Free MIDI Piano Practice Tools", "A comparison-style guide designed for real user intent and AdSense-safe original content.")}
-        ${articleCard("Privacy-Friendly Transcription Tools", "A future guide for creators who need subtitle exports without subscription lock-in.")}
+        ${cards.map((card) => articleCard(card.title, card.text, `${site.baseUrl}/${data.locale}/${routeMap[card.route]}/`, card.cta)).join("\n        ")}
       </section>`;
+  }
+
+  if (seoGuideRoutes.includes(route)) {
+    return renderSeoGuide(route, data);
   }
 
   if (isToolPage) {
@@ -1095,12 +1238,326 @@ function toolCard(title, text, href, status, linkLabel = "Open page") {
         </article>`;
 }
 
-function articleCard(title, text) {
+function articleCard(title, text, href, linkLabel) {
   return `<article class="card">
           <h2>${escapeHtml(title)}</h2>
           <p>${escapeHtml(text)}</p>
-          <a href="#">Planned article</a>
+          <a href="${href}">${escapeHtml(linkLabel)}</a>
         </article>`;
+}
+
+function blogGuideCards(locale) {
+  const cards = {
+    en: [
+      { route: "freeMidiGuide", title: "Free MIDI Piano Trainer Online", text: "Practice your own MIDI files in the browser with falling notes, track selection, and piano playback.", cta: "Read guide" },
+      { route: "freeAudioGuide", title: "Free Audio to MIDI Converter", text: "Understand the beta converter, good source audio, backend waiting time, and result quality limits.", cta: "Read guide" },
+      { route: "howConvertGuide", title: "How to Convert Audio to MIDI", text: "A step-by-step workflow from preparing audio to downloading MIDI and opening it in the trainer.", cta: "Read guide" },
+    ],
+    ru: [
+      { route: "freeMidiGuide", title: "Бесплатный MIDI Piano Trainer онлайн", text: "Практика по своим MIDI-файлам в браузере: падающие ноты, выбор дорожек и прослушивание пианино.", cta: "Читать гайд" },
+      { route: "freeAudioGuide", title: "Бесплатный конвертер аудио в MIDI", text: "Что умеет beta-конвертер, какое аудио подходит лучше и почему обработка может занимать минуты.", cta: "Читать гайд" },
+      { route: "howConvertGuide", title: "Как конвертировать аудио в MIDI", text: "Пошаговый workflow от подготовки аудио до скачивания MIDI и открытия результата в тренажере.", cta: "Читать гайд" },
+    ],
+    de: [
+      { route: "freeMidiGuide", title: "Kostenloser MIDI Piano Trainer online", text: "Eigene MIDI-Dateien im Browser ueben: fallende Noten, Spurauswahl und Piano-Wiedergabe.", cta: "Guide lesen" },
+      { route: "freeAudioGuide", title: "Kostenloser Audio zu MIDI Converter", text: "Beta-Converter, passende Aufnahmen, Wartezeit und realistische Qualitaetsgrenzen verstehen.", cta: "Guide lesen" },
+      { route: "howConvertGuide", title: "Audio in MIDI umwandeln", text: "Schritt fuer Schritt von der Audio-Vorbereitung bis zum MIDI-Download und Oeffnen im Trainer.", cta: "Guide lesen" },
+    ],
+    es: [
+      { route: "freeMidiGuide", title: "MIDI Piano Trainer gratis online", text: "Practica tus propios MIDI en el navegador con notas descendentes, pistas y sonido de piano.", cta: "Leer guia" },
+      { route: "freeAudioGuide", title: "Conversor audio a MIDI gratis", text: "Entiende el conversor beta, el audio recomendado, la espera del backend y los limites de calidad.", cta: "Leer guia" },
+      { route: "howConvertGuide", title: "Como convertir audio a MIDI", text: "Flujo paso a paso: preparar audio, generar MIDI, descargarlo y abrirlo en el trainer.", cta: "Leer guia" },
+    ],
+    hy: [
+      { route: "freeMidiGuide", title: "Անվճար MIDI Piano Trainer առցանց", text: "Վարժվեք սեփական MIDI ֆայլերով browser-ում՝ ընկնող նոտաներով, track selection-ով եւ piano playback-ով:", cta: "Կարդալ ուղեցույցը" },
+      { route: "freeAudioGuide", title: "Անվճար Audio to MIDI Converter", text: "Հասկացեք beta converter-ը, լավ source audio-ն, backend սպասումը եւ որակի սահմանները:", cta: "Կարդալ ուղեցույցը" },
+      { route: "howConvertGuide", title: "Ինչպես փոխարկել audio-ն MIDI-ի", text: "Քայլ առ քայլ workflow՝ audio պատրաստելուց մինչ MIDI ներբեռնում եւ trainer-ում բացում:", cta: "Կարդալ ուղեցույցը" },
+    ],
+  };
+  return cards[locale] || cards.en;
+}
+
+function renderSeoGuide(route, data) {
+  const guide = seoGuideCopy(data.locale)[route] || seoGuideCopy("en")[route];
+  const toolHref = route === "freeMidiGuide" ? site.midiUrl : `${site.midiUrl}${data.locale}/audio-to-midi/`;
+  const relatedHref = route === "freeMidiGuide"
+    ? `${site.baseUrl}/${data.locale}/blog/free-audio-to-midi-converter/`
+    : `${site.baseUrl}/${data.locale}/blog/free-midi-piano-trainer/`;
+
+  return `
+      <article class="article-body">
+        ${guide.sections.map((section) => `<section class="panel">
+          <h2>${escapeHtml(section.title)}</h2>
+          <p>${escapeHtml(section.text)}</p>
+        </section>`).join("\n        ")}
+
+        <section class="panel">
+          <h2>${escapeHtml(guide.stepsTitle)}</h2>
+          <ol>
+            ${guide.steps.map((step) => `<li>${escapeHtml(step)}</li>`).join("\n            ")}
+          </ol>
+        </section>
+
+        <section class="panel">
+          <h2>${escapeHtml(guide.faqTitle)}</h2>
+          <dl class="faq-list">
+            ${guide.faq.map((item) => `<dt>${escapeHtml(item.q)}</dt><dd>${escapeHtml(item.a)}</dd>`).join("\n            ")}
+          </dl>
+        </section>
+      </article>
+
+      <section class="grid two">
+        <article class="card">
+          <h2>${escapeHtml(guide.tryTitle)}</h2>
+          <p>${escapeHtml(guide.tryText)}</p>
+          <a href="${toolHref}">${escapeHtml(guide.tryCta)}</a>
+        </article>
+        <article class="card">
+          <h2>${escapeHtml(guide.relatedTitle)}</h2>
+          <p>${escapeHtml(guide.relatedText)}</p>
+          <a href="${relatedHref}">${escapeHtml(guide.relatedCta)}</a>
+        </article>
+      </section>`;
+}
+
+function seoGuideCopy(locale) {
+  const common = {
+    en: {
+      faqTitle: "FAQ",
+      tryTitle: "Try the tool",
+      tryCta: "Open the tool",
+      relatedTitle: "Related guide",
+      relatedCta: "Read next",
+      freeMidiGuide: {
+        sections: [
+          { title: "What this tool does", text: "MIDI Piano Trainer is a free browser-first piano practice tool. You upload a MIDI file, choose tracks, follow falling notes, listen to playback, and practice with a PC keyboard before connecting more serious MIDI hardware later." },
+          { title: "Who it is for", text: "It is useful for beginners who want a visual piano trainer, creators checking MIDI arrangements, and open-source users who prefer a tool that can be hosted or modified instead of locked behind a subscription." },
+          { title: "Quality and limits", text: "The trainer depends on the MIDI file you provide. It does not magically correct bad MIDI, but it makes practice easier by showing timing, pitch lanes, track choices, and immediate playback in the browser." },
+        ],
+        stepsTitle: "How to practice a MIDI file",
+        steps: ["Open MIDI Piano Trainer.", "Upload your own .mid file.", "Choose all tracks or one track if the arrangement is too dense.", "Use Listen to hear the piano playback.", "Start practice mode and follow the falling notes."],
+        faq: [
+          { q: "Is it free?", a: "Yes. The core trainer is free and open-source." },
+          { q: "Do I need an account?", a: "No. The trainer is designed to work directly in the browser." },
+          { q: "Can I use generated MIDI?", a: "Yes. Audio-to-MIDI results can be opened in the trainer after conversion." },
+        ],
+        tryText: "Open the live trainer and test it with any MIDI file you are allowed to use.",
+        relatedText: "If you only have an audio recording, read the converter guide next.",
+      },
+      freeAudioGuide: {
+        sections: [
+          { title: "What this converter does", text: "The free Audio to MIDI Converter is a beta tool for user-owned audio. It sends the file to the official backend automatically, waits for transcription, then returns a MIDI file that can be downloaded or opened in MIDI Piano Trainer." },
+          { title: "Best source audio", text: "Clean solo piano works best. Short clips, low noise, clear attacks, and stable tempo are much easier to transcribe than full songs, vocals, drums, reverb-heavy recordings, or mixed instruments." },
+          { title: "Quality expectations", text: "Audio-to-MIDI quality depends on the recognition model, preprocessing, and the recording itself. The free backend can be slow, and beta results may miss notes, add extra notes, or estimate timing imperfectly." },
+        ],
+        stepsTitle: "How to use the converter",
+        steps: ["Prepare a short audio file you own.", "Open the Audio-to-MIDI page.", "Upload MP3, WAV, OGG, FLAC, or M4A.", "Wait while the backend queues and processes the file.", "Download the MIDI or open it in MIDI Piano Trainer."],
+        faq: [
+          { q: "Does it download YouTube?", a: "No. Upload your own audio file. The project does not download YouTube directly." },
+          { q: "Why can conversion take minutes?", a: "Piano transcription is heavy, and the free backend may process jobs in a queue." },
+          { q: "Will it be perfect?", a: "No. It is a beta workflow and works best on clean solo piano." },
+        ],
+        tryText: "Try the beta converter with a short clean piano recording first.",
+        relatedText: "After conversion, use the trainer guide to practice the generated MIDI.",
+      },
+      howConvertGuide: {
+        sections: [
+          { title: "Prepare the audio", text: "Use your own file, trim long silence, and start with a short clean piano clip. Audio with multiple instruments or heavy noise is much harder to convert accurately." },
+          { title: "Run the conversion", text: "Open the converter, upload the file, and keep the page open while the backend estimates waiting time, processes the queue, and creates the MIDI result." },
+          { title: "Check the MIDI result", text: "Download the MIDI and listen to it in the trainer. Compare pitch, rhythm, tempo, and missing notes before deciding whether the source audio or transcription settings need improvement." },
+        ],
+        stepsTitle: "Step-by-step workflow",
+        steps: ["Choose a short audio file you own.", "Upload it to the converter.", "Wait for queued and processing states to finish.", "Download the generated MIDI.", "Open the MIDI in the trainer and listen for errors."],
+        faq: [
+          { q: "What file should I test first?", a: "A short, clean solo piano recording is the best first test." },
+          { q: "What if the result is bad?", a: "Try a cleaner clip, shorter duration, or report the result through the feedback link." },
+          { q: "Can I compare quality?", a: "Yes. The project includes a benchmark page for comparing reference MIDI, external MIDI, and generated MIDI." },
+        ],
+        tryText: "Start with the public converter and then inspect the MIDI in the trainer.",
+        relatedText: "Read the free Audio-to-MIDI guide for quality expectations and limits.",
+      },
+    },
+  };
+
+  for (const route of seoGuideRoutes) {
+    Object.assign(common.en[route], {
+      faqTitle: common.en.faqTitle,
+      tryTitle: common.en.tryTitle,
+      tryCta: common.en.tryCta,
+      relatedTitle: common.en.relatedTitle,
+      relatedCta: common.en.relatedCta,
+    });
+  }
+
+  common.ru = translateSeoGuides("ru");
+  common.de = translateSeoGuides("de");
+  common.es = translateSeoGuides("es");
+  common.hy = translateSeoGuides("hy");
+  return common[locale] || common.en;
+}
+
+function translateSeoGuides(locale) {
+  const labels = {
+    ru: {
+      faqTitle: "FAQ",
+      tryTitle: "Попробовать инструмент",
+      tryCta: "Открыть инструмент",
+      relatedTitle: "Связанный гайд",
+      relatedCta: "Читать дальше",
+      midiWhat: "Что делает инструмент",
+      midiWho: "Для кого он",
+      midiLimits: "Качество и ограничения",
+      midiSteps: "Как заниматься по MIDI",
+      audioWhat: "Что делает конвертер",
+      audioBest: "Лучшее исходное аудио",
+      audioQuality: "Ожидания по качеству",
+      audioSteps: "Как пользоваться конвертером",
+      howPrepare: "Подготовьте аудио",
+      howRun: "Запустите конвертацию",
+      howCheck: "Проверьте MIDI результат",
+      howSteps: "Пошаговый workflow",
+    },
+    de: {
+      faqTitle: "FAQ",
+      tryTitle: "Tool testen",
+      tryCta: "Tool oeffnen",
+      relatedTitle: "Passender Guide",
+      relatedCta: "Weiterlesen",
+      midiWhat: "Was das Tool macht",
+      midiWho: "Fuer wen es passt",
+      midiLimits: "Qualitaet und Grenzen",
+      midiSteps: "MIDI-Datei ueben",
+      audioWhat: "Was der Converter macht",
+      audioBest: "Beste Ausgangsaufnahme",
+      audioQuality: "Qualitaet realistisch einschaetzen",
+      audioSteps: "Converter nutzen",
+      howPrepare: "Audio vorbereiten",
+      howRun: "Konvertierung starten",
+      howCheck: "MIDI-Ergebnis pruefen",
+      howSteps: "Schritt-fuer-Schritt Workflow",
+    },
+    es: {
+      faqTitle: "FAQ",
+      tryTitle: "Probar herramienta",
+      tryCta: "Abrir herramienta",
+      relatedTitle: "Guia relacionada",
+      relatedCta: "Leer siguiente",
+      midiWhat: "Que hace la herramienta",
+      midiWho: "Para quien sirve",
+      midiLimits: "Calidad y limites",
+      midiSteps: "Como practicar un MIDI",
+      audioWhat: "Que hace el conversor",
+      audioBest: "Mejor audio de origen",
+      audioQuality: "Expectativas de calidad",
+      audioSteps: "Como usar el conversor",
+      howPrepare: "Preparar el audio",
+      howRun: "Ejecutar la conversion",
+      howCheck: "Revisar el MIDI",
+      howSteps: "Workflow paso a paso",
+    },
+    hy: {
+      faqTitle: "FAQ",
+      tryTitle: "Փորձել գործիքը",
+      tryCta: "Բացել գործիքը",
+      relatedTitle: "Կապված ուղեցույց",
+      relatedCta: "Կարդալ հաջորդը",
+      midiWhat: "Ինչ է անում գործիքը",
+      midiWho: "Ում համար է",
+      midiLimits: "Որակ եւ սահմանափակումներ",
+      midiSteps: "Ինչպես վարժվել MIDI-ով",
+      audioWhat: "Ինչ է անում converter-ը",
+      audioBest: "Լավագույն source audio",
+      audioQuality: "Որակի սպասելիքներ",
+      audioSteps: "Ինչպես օգտագործել converter-ը",
+      howPrepare: "Պատրաստեք audio-ն",
+      howRun: "Սկսեք conversion-ը",
+      howCheck: "Ստուգեք MIDI արդյունքը",
+      howSteps: "Քայլ առ քայլ workflow",
+    },
+  }[locale];
+
+  const text = {
+    ru: {
+      midi: ["MIDI Piano Trainer - бесплатный browser-first тренажер. Пользователь загружает MIDI-файл, выбирает дорожки, видит падающие ноты, слушает playback и тренируется на клавиатуре ПК.", "Инструмент полезен новичкам, авторам MIDI-аранжировок и пользователям open-source, которым важны бесплатность, прозрачность и возможность self-host.", "Качество тренировки зависит от MIDI-файла. Тренажер не исправляет плохой MIDI автоматически, но помогает увидеть тайминг, высоту нот, дорожки и услышать результат."],
+      audio: ["Audio to MIDI Converter - beta-инструмент для аудио, которым вы имеете право пользоваться. Публичная страница автоматически использует официальный backend и возвращает MIDI.", "Лучше всего работает чистое solo piano: короткие клипы, мало шума, понятные атаки нот и стабильный темп.", "Качество зависит от модели, preprocessing и записи. Beta может пропускать ноты, добавлять лишние или ошибаться во времени."],
+      how: ["Используйте свой файл, уберите длинную тишину и начните с короткого чистого piano-клипа.", "Откройте конвертер, загрузите файл и держите страницу открытой, пока backend показывает очередь и обработку.", "Скачайте MIDI и послушайте его в тренажере. Проверьте ноты, ритм, tempo и пропуски."],
+      midiSteps: ["Откройте MIDI Piano Trainer.", "Загрузите свой .mid файл.", "Выберите все дорожки или одну дорожку.", "Нажмите Listen, чтобы услышать playback.", "Запустите тренировку и следите за падающими нотами."],
+      audioSteps: ["Подготовьте короткий аудиофайл.", "Откройте страницу Audio-to-MIDI.", "Загрузите MP3, WAV, OGG, FLAC или M4A.", "Дождитесь очереди и обработки.", "Скачайте MIDI или откройте его в тренажере."],
+      howStepsList: ["Выберите короткое аудио, которым вы владеете.", "Загрузите его в конвертер.", "Дождитесь queued и processing states.", "Скачайте generated MIDI.", "Откройте MIDI в тренажере и послушайте ошибки."],
+      faq: [["Это бесплатно?", "Да. Core-функции остаются бесплатными и open-source."], ["Нужен аккаунт?", "Нет. Основной сценарий работает в браузере."], ["Почему результат не идеален?", "Audio-to-MIDI зависит от записи, модели и preprocessing. Это beta."]],
+      tryText: "Откройте инструмент и попробуйте короткий чистый файл.",
+      relatedText: "Прочитайте следующий гайд, чтобы понять соседний workflow.",
+    },
+    de: {
+      midi: ["MIDI Piano Trainer ist ein kostenloses browser-first Uebungswerkzeug. Nutzer laden MIDI hoch, waehlen Spuren, sehen fallende Noten, hoeren Playback und ueben mit der PC-Tastatur.", "Es passt fuer Anfaenger, MIDI-Creator und Open-Source-Nutzer, die ein kostenloses, transparentes und self-host-freundliches Tool suchen.", "Die Uebungsqualitaet haengt von der MIDI-Datei ab. Das Tool korrigiert MIDI nicht automatisch, zeigt aber Timing, Tonhoehe, Spuren und Playback klar."],
+      audio: ["Audio to MIDI Converter ist ein beta Tool fuer eigene Audiodateien. Die oeffentliche Seite nutzt automatisch das offizielle Backend und gibt eine MIDI-Datei zurueck.", "Am besten funktionieren kurze, saubere Solo-Piano-Clips mit wenig Rauschen, klaren Anschlaegen und stabilem Tempo.", "Die Qualitaet haengt von Modell, Preprocessing und Aufnahme ab. Beta-Ergebnisse koennen Noten verpassen oder Timing ungenau schaetzen."],
+      how: ["Nutze eine eigene Datei, entferne lange Stille und beginne mit einem kurzen sauberen Piano-Clip.", "Oeffne den Converter, lade die Datei hoch und lasse die Seite offen, waehrend Queue und Processing laufen.", "Lade MIDI herunter und hoere es im Trainer. Pruefe Noten, Rhythmus, Tempo und fehlende Noten."],
+      midiSteps: ["MIDI Piano Trainer oeffnen.", ".mid Datei hochladen.", "Alle Spuren oder eine einzelne Spur waehlen.", "Mit Listen das Playback hoeren.", "Practice starten und den fallenden Noten folgen."],
+      audioSteps: ["Kurze Audiodatei vorbereiten.", "Audio-to-MIDI Seite oeffnen.", "MP3, WAV, OGG, FLAC oder M4A hochladen.", "Queue und Processing abwarten.", "MIDI herunterladen oder im Trainer oeffnen."],
+      howStepsList: ["Kurze eigene Audiodatei waehlen.", "In den Converter hochladen.", "Queued und Processing abwarten.", "Generated MIDI herunterladen.", "MIDI im Trainer oeffnen und Fehler anhoeren."],
+      faq: [["Ist es kostenlos?", "Ja. Die Kernfunktionen bleiben kostenlos und open source."], ["Brauche ich einen Account?", "Nein. Der Hauptworkflow laeuft im Browser."], ["Warum ist das Ergebnis nicht perfekt?", "Audio-to-MIDI haengt von Aufnahme, Modell und Preprocessing ab. Es ist beta."]],
+      tryText: "Oeffne das Tool und teste zuerst eine kurze saubere Aufnahme.",
+      relatedText: "Lies den naechsten Guide, um den verbundenen Workflow zu verstehen.",
+    },
+    es: {
+      midi: ["MIDI Piano Trainer es una herramienta gratis orientada al navegador. Subes MIDI, eliges pistas, ves notas descendentes, escuchas playback y practicas con el teclado del PC.", "Sirve para principiantes, creadores de MIDI y usuarios open-source que prefieren una herramienta gratis, clara y facil de self-host.", "La calidad depende del archivo MIDI. El trainer no corrige un MIDI malo automaticamente, pero muestra timing, notas, pistas y playback con claridad."],
+      audio: ["Audio to MIDI Converter es una herramienta beta para audio propio. La pagina publica usa automaticamente el backend oficial y devuelve un archivo MIDI.", "Funciona mejor con clips cortos de piano solo, poco ruido, ataques claros y tempo estable.", "La calidad depende del modelo, preprocessing y grabacion. La beta puede perder notas, anadir notas extra o estimar mal el tiempo."],
+      how: ["Usa tu propio archivo, elimina silencios largos y empieza con un clip corto y limpio de piano.", "Abre el conversor, sube el archivo y deja la pagina abierta mientras pasan queue y processing.", "Descarga el MIDI y escuchalo en el trainer. Revisa notas, ritmo, tempo y notas perdidas."],
+      midiSteps: ["Abre MIDI Piano Trainer.", "Sube tu archivo .mid.", "Elige todas las pistas o una sola.", "Usa Listen para oir playback.", "Inicia practica y sigue las notas descendentes."],
+      audioSteps: ["Prepara un audio corto.", "Abre Audio-to-MIDI.", "Sube MP3, WAV, OGG, FLAC o M4A.", "Espera cola y procesamiento.", "Descarga MIDI o abrelo en el trainer."],
+      howStepsList: ["Elige un audio corto propio.", "Subelo al conversor.", "Espera queued y processing.", "Descarga el MIDI generado.", "Abre el MIDI en el trainer y escucha errores."],
+      faq: [["Es gratis?", "Si. Las funciones principales siguen gratis y open-source."], ["Necesito cuenta?", "No. El flujo principal funciona en el navegador."], ["Por que no es perfecto?", "Audio-to-MIDI depende de la grabacion, el modelo y preprocessing. Es beta."]],
+      tryText: "Abre la herramienta y prueba primero un audio corto y limpio.",
+      relatedText: "Lee la siguiente guia para entender el workflow relacionado.",
+    },
+    hy: {
+      midi: ["MIDI Piano Trainer-ը անվճար browser-first վարժանքի գործիք է: Օգտատերը բեռնում է MIDI, ընտրում tracks, տեսնում ընկնող նոտաներ, լսում playback եւ վարժվում PC keyboard-ով:", "Այն օգտակար է սկսնակների, MIDI ստեղծողների եւ open-source օգտատերերի համար, որոնք ուզում են անվճար եւ self-host-friendly գործիք:", "Վարժանքի որակը կախված է MIDI ֆայլից: Գործիքը չի ուղղում վատ MIDI-ն ավտոմատ, բայց պարզ ցույց է տալիս timing-ը, նոտաները, tracks-ը եւ playback-ը:"],
+      audio: ["Audio to MIDI Converter-ը beta գործիք է սեփական audio-ի համար: Public էջը ավտոմատ օգտագործում է official backend-ը եւ վերադարձնում MIDI ֆայլ:", "Ավելի լավ աշխատում է կարճ, մաքուր solo piano clips-ի հետ՝ քիչ noise, հստակ note attacks եւ կայուն tempo:", "Որակը կախված է model-ից, preprocessing-ից եւ recording-ից: Beta արդյունքը կարող է բաց թողնել նոտաներ կամ սխալ գնահատել timing-ը:"],
+      how: ["Օգտագործեք ձեր սեփական ֆայլը, կտրեք երկար լռությունը եւ սկսեք կարճ մաքուր piano clip-ից:", "Բացեք converter-ը, բեռնեք ֆայլը եւ պահեք էջը բաց, մինչեւ queue եւ processing ավարտվեն:", "Ներբեռնեք MIDI-ն եւ լսեք trainer-ում: Ստուգեք նոտաները, rhythm-ը, tempo-ն եւ բաց թողնված նոտաները:"],
+      midiSteps: ["Բացեք MIDI Piano Trainer-ը:", "Բեռնեք ձեր .mid ֆայլը:", "Ընտրեք բոլոր tracks-ը կամ մեկ track:", "Օգտագործեք Listen playback լսելու համար:", "Սկսեք practice եւ հետեւեք ընկնող նոտաներին:"],
+      audioSteps: ["Պատրաստեք կարճ audio ֆայլ:", "Բացեք Audio-to-MIDI էջը:", "Բեռնեք MP3, WAV, OGG, FLAC կամ M4A:", "Սպասեք queue եւ processing:", "Ներբեռնեք MIDI կամ բացեք trainer-ում:"],
+      howStepsList: ["Ընտրեք կարճ սեփական audio:", "Բեռնեք converter-ում:", "Սպասեք queued եւ processing states:", "Ներբեռնեք generated MIDI:", "Բացեք MIDI-ն trainer-ում եւ լսեք սխալները:"],
+      faq: [["Անվճա՞ր է:", "Այո: Core ֆունկցիաները մնում են անվճար եւ open-source:"], ["Պե՞տք է account:", "Ոչ: Հիմնական workflow-ը աշխատում է browser-ում:"], ["Ինչու՞ արդյունքը perfect չէ:", "Audio-to-MIDI-ն կախված է recording-ից, model-ից եւ preprocessing-ից: Սա beta է:"]],
+      tryText: "Բացեք գործիքը եւ առաջինը փորձեք կարճ մաքուր audio:",
+      relatedText: "Կարդացեք հաջորդ ուղեցույցը՝ կապված workflow-ը հասկանալու համար:",
+    },
+  }[locale];
+
+  const build = (kind) => ({
+    sections: kind === "midi"
+      ? [
+        { title: labels.midiWhat, text: text.midi[0] },
+        { title: labels.midiWho, text: text.midi[1] },
+        { title: labels.midiLimits, text: text.midi[2] },
+      ]
+      : kind === "audio"
+        ? [
+          { title: labels.audioWhat, text: text.audio[0] },
+          { title: labels.audioBest, text: text.audio[1] },
+          { title: labels.audioQuality, text: text.audio[2] },
+        ]
+        : [
+          { title: labels.howPrepare, text: text.how[0] },
+          { title: labels.howRun, text: text.how[1] },
+          { title: labels.howCheck, text: text.how[2] },
+        ],
+    stepsTitle: kind === "midi" ? labels.midiSteps : kind === "audio" ? labels.audioSteps : labels.howSteps,
+    steps: kind === "midi" ? text.midiSteps : kind === "audio" ? text.audioSteps : text.howStepsList,
+    faqTitle: labels.faqTitle,
+    faq: text.faq.map(([q, a]) => ({ q, a })),
+    tryTitle: labels.tryTitle,
+    tryText: text.tryText,
+    tryCta: labels.tryCta,
+    relatedTitle: labels.relatedTitle,
+    relatedText: text.relatedText,
+    relatedCta: labels.relatedCta,
+  });
+
+  return {
+    freeMidiGuide: build("midi"),
+    freeAudioGuide: build("audio"),
+    howConvertGuide: build("how"),
+  };
 }
 
 function canonical(path) {
@@ -1216,6 +1673,29 @@ function buildStructuredData(route, data, page, url) {
     ];
   }
 
+  if (seoGuideRoutes.includes(route)) {
+    return [
+      organization,
+      breadcrumb,
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: page.h1,
+        description: page.description,
+        url,
+        author: {
+          "@type": "Organization",
+          name: site.name,
+        },
+        publisher: {
+          "@type": "Organization",
+          name: site.name,
+        },
+        inLanguage: data.locale,
+      },
+    ];
+  }
+
   return [organization, website, breadcrumb];
 }
 
@@ -1228,7 +1708,7 @@ function sitemapMeta(path) {
   if (!normalized) return { changefreq: "weekly", priority: "1.0" };
   if (normalized.endsWith("tools")) return { changefreq: "weekly", priority: "0.9" };
   if (normalized.includes("/tools/") || normalized.startsWith("tools/")) return { changefreq: "weekly", priority: "0.8" };
-  if (normalized.endsWith("blog")) return { changefreq: "weekly", priority: "0.7" };
+  if (normalized.endsWith("blog") || normalized.includes("/blog/") || normalized.startsWith("blog/")) return { changefreq: "weekly", priority: "0.7" };
   return { changefreq: "monthly", priority: "0.6" };
 }
 
@@ -1572,6 +2052,30 @@ p { color: var(--muted); line-height: 1.65; }
 .card p, .panel p { margin-bottom: 0; }
 .roadmap { margin: 20px 0; }
 .roadmap ol { margin: 0; padding-left: 22px; color: var(--muted); line-height: 1.7; }
+.article-body {
+  display: grid;
+  gap: 16px;
+}
+.article-body ol {
+  margin: 0;
+  padding-left: 22px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.faq-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+}
+.faq-list dt {
+  color: var(--ink);
+  font-weight: 800;
+}
+.faq-list dd {
+  margin: 0 0 8px;
+  color: var(--muted);
+  line-height: 1.65;
+}
 .project-overview {
   display: grid;
   grid-template-columns: 1.2fr 1fr 1fr;

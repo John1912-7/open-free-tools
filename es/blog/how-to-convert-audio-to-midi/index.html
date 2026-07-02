@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+    <meta name="google-site-verification" content="IKltP1oUj7Y3BJdkTE2-DUNCvV29QHhHrTNKxxtqPhs" />
+    <meta name="application-name" content="Open Free Tools" />
+    <meta name="theme-color" content="#087f68" />
+    <title>Como convertir audio a MIDI - guia paso a paso</title>
+    <meta name="description" content="Guia paso a paso para preparar audio propio, convertirlo a MIDI, esperar el procesamiento y revisar el resultado." />
+    <link rel="canonical" href="https://john1912-7.github.io/open-free-tools/es/blog/how-to-convert-audio-to-midi/" />
+    <link rel="alternate" hreflang="x-default" href="https://john1912-7.github.io/open-free-tools/blog/how-to-convert-audio-to-midi/" />
+    <link rel="alternate" hreflang="en" href="https://john1912-7.github.io/open-free-tools/en/blog/how-to-convert-audio-to-midi/" />
+    <link rel="alternate" hreflang="ru" href="https://john1912-7.github.io/open-free-tools/ru/blog/how-to-convert-audio-to-midi/" />
+    <link rel="alternate" hreflang="de" href="https://john1912-7.github.io/open-free-tools/de/blog/how-to-convert-audio-to-midi/" />
+    <link rel="alternate" hreflang="es" href="https://john1912-7.github.io/open-free-tools/es/blog/how-to-convert-audio-to-midi/" />
+    <link rel="alternate" hreflang="hy" href="https://john1912-7.github.io/open-free-tools/hy/blog/how-to-convert-audio-to-midi/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es" />
+    <meta property="og:title" content="Como convertir audio a MIDI - guia paso a paso" />
+    <meta property="og:description" content="Guia paso a paso para preparar audio propio, convertirlo a MIDI, esperar el procesamiento y revisar el resultado." />
+    <meta property="og:url" content="https://john1912-7.github.io/open-free-tools/es/blog/how-to-convert-audio-to-midi/" />
+    <meta property="og:site_name" content="Open Free Tools" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Como convertir audio a MIDI - guia paso a paso" />
+    <meta name="twitter:description" content="Guia paso a paso para preparar audio propio, convertirlo a MIDI, esperar el procesamiento y revisar el resultado." />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EFDCRJY776"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag("js", new Date());
+      gtag("config", "G-EFDCRJY776");
+    </script>
+    <script>
+      (() => {
+        const saved = localStorage.getItem("oft-theme");
+        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.dataset.theme = saved || (prefersDark ? "dark" : "light");
+      })();
+    </script>
+    <link rel="stylesheet" href="../../../assets/styles.css" />
+    <script type="application/ld+json">[{"@context":"https://schema.org","@type":"Organization","name":"Open Free Tools","url":"https://john1912-7.github.io/open-free-tools","sameAs":["https://github.com/john1912-7"]},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Open Free Tools","item":"https://john1912-7.github.io/open-free-tools/"},{"@type":"ListItem","position":2,"name":"Como convertir audio a MIDI","item":"https://john1912-7.github.io/open-free-tools/es/blog/how-to-convert-audio-to-midi/"}]},{"@context":"https://schema.org","@type":"Article","headline":"Como convertir audio a MIDI","description":"Guia paso a paso para preparar audio propio, convertirlo a MIDI, esperar el procesamiento y revisar el resultado.","url":"https://john1912-7.github.io/open-free-tools/es/blog/how-to-convert-audio-to-midi/","author":{"@type":"Organization","name":"Open Free Tools"},"publisher":{"@type":"Organization","name":"Open Free Tools"},"inLanguage":"es"}]</script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../../../es/">
+        <span>OFT</span>
+        <strong>Open Free Tools</strong>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="../../../es/tools/">Herramientas</a>
+        <a href="../../../es/about/">Proyecto</a>
+        <a href="../../../es/blog/">Blog</a>
+        <a href="../../../es/donate/">Donar</a>
+        <a href="../../../es/contribute/">Contribuir</a>
+        <a href="../../../es/legal/">Legal</a>
+        <a href="../../../es/contact/">Contacto</a>
+      </nav>
+      <div class="header-controls">
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle dark or light theme">
+          <span data-theme-icon>◐</span>
+        </button>
+        <details class="language-menu">
+          <summary aria-label="Change language">
+            <span class="flag">🇪🇸</span>
+            <span class="chevron" aria-hidden="true">▾</span>
+          </summary>
+          <div class="language-list" aria-label="Languages">
+          <a href="../../../en/blog/how-to-convert-audio-to-midi/"><span class="flag">🇬🇧</span><span>English</span></a>
+          <a href="../../../ru/blog/how-to-convert-audio-to-midi/"><span class="flag">🇷🇺</span><span>Русский</span></a>
+          <a href="../../../de/blog/how-to-convert-audio-to-midi/"><span class="flag">🇩🇪</span><span>Deutsch</span></a>
+          <a href="../../../es/blog/how-to-convert-audio-to-midi/" aria-current="true"><span class="flag">🇪🇸</span><span>Español</span></a>
+          <a href="../../../hy/blog/how-to-convert-audio-to-midi/"><span class="flag">🇦🇲</span><span>Հայերեն</span></a>
+          </div>
+        </details>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Free · Open Source · Browser First</p>
+          <h1>Como convertir audio a MIDI</h1>
+          <p>Este workflow muestra como subir audio, generar MIDI, descargarlo y abrirlo en MIDI Piano Trainer.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="https://john1912-7.github.io/midi-piano-trainer/">Probar herramienta</a>
+            <a class="button" href="https://github.com/john1912-7">Star en GitHub</a>
+          </div>
+        </div>
+        
+      </section>
+
+
+      <article class="article-body">
+        <section class="panel">
+          <h2>Preparar el audio</h2>
+          <p>Usa tu propio archivo, elimina silencios largos y empieza con un clip corto y limpio de piano.</p>
+        </section>
+        <section class="panel">
+          <h2>Ejecutar la conversion</h2>
+          <p>Abre el conversor, sube el archivo y deja la pagina abierta mientras pasan queue y processing.</p>
+        </section>
+        <section class="panel">
+          <h2>Revisar el MIDI</h2>
+          <p>Descarga el MIDI y escuchalo en el trainer. Revisa notas, ritmo, tempo y notas perdidas.</p>
+        </section>
+
+        <section class="panel">
+          <h2>Workflow paso a paso</h2>
+          <ol>
+            <li>Elige un audio corto propio.</li>
+            <li>Subelo al conversor.</li>
+            <li>Espera queued y processing.</li>
+            <li>Descarga el MIDI generado.</li>
+            <li>Abre el MIDI en el trainer y escucha errores.</li>
+          </ol>
+        </section>
+
+        <section class="panel">
+          <h2>FAQ</h2>
+          <dl class="faq-list">
+            <dt>Es gratis?</dt><dd>Si. Las funciones principales siguen gratis y open-source.</dd>
+            <dt>Necesito cuenta?</dt><dd>No. El flujo principal funciona en el navegador.</dd>
+            <dt>Por que no es perfecto?</dt><dd>Audio-to-MIDI depende de la grabacion, el modelo y preprocessing. Es beta.</dd>
+          </dl>
+        </section>
+      </article>
+
+      <section class="grid two">
+        <article class="card">
+          <h2>Probar herramienta</h2>
+          <p>Abre la herramienta y prueba primero un audio corto y limpio.</p>
+          <a href="https://john1912-7.github.io/midi-piano-trainer/es/audio-to-midi/">Abrir herramienta</a>
+        </article>
+        <article class="card">
+          <h2>Guia relacionada</h2>
+          <p>Lee la siguiente guia para entender el workflow relacionado.</p>
+          <a href="https://john1912-7.github.io/open-free-tools/es/blog/free-midi-piano-trainer/">Leer siguiente</a>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <p>Open Free Tools is an independent open-source project. No affiliation with paid services mentioned in comparisons.</p>
+      <p><a href="../../../es/privacy/">Privacy</a> · <a href="../../../es/legal/">Legal</a> · <a href="../../../es/contact/">Contact</a></p>
+    </footer>
+    <script>
+      (() => {
+        const button = document.querySelector("[data-theme-toggle]");
+        const icon = document.querySelector("[data-theme-icon]");
+        const setIcon = () => {
+          const theme = document.documentElement.dataset.theme || "light";
+          icon.textContent = theme === "dark" ? "☀" : "☾";
+          button.setAttribute("aria-label", theme === "dark" ? "Switch to light theme" : "Switch to dark theme");
+        };
+
+        setIcon();
+        button.addEventListener("click", () => {
+          const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+          document.documentElement.dataset.theme = next;
+          localStorage.setItem("oft-theme", next);
+          setIcon();
+        });
+      })();
+    </script>
+  </body>
+</html>

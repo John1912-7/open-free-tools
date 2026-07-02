@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="hy">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+    <meta name="google-site-verification" content="IKltP1oUj7Y3BJdkTE2-DUNCvV29QHhHrTNKxxtqPhs" />
+    <meta name="application-name" content="Open Free Tools" />
+    <meta name="theme-color" content="#087f68" />
+    <title>Ինչպես փոխարկել audio-ն MIDI-ի - քայլ առ քայլ</title>
+    <meta name="description" content="Քայլ առ քայլ ուղեցույց՝ պատրաստել սեփական audio-ն, փոխարկել MIDI-ի, սպասել backend processing-ին եւ ստուգել արդյունքը:" />
+    <link rel="canonical" href="https://john1912-7.github.io/open-free-tools/hy/blog/how-to-convert-audio-to-midi/" />
+    <link rel="alternate" hreflang="x-default" href="https://john1912-7.github.io/open-free-tools/blog/how-to-convert-audio-to-midi/" />
+    <link rel="alternate" hreflang="en" href="https://john1912-7.github.io/open-free-tools/en/blog/how-to-convert-audio-to-midi/" />
+    <link rel="alternate" hreflang="ru" href="https://john1912-7.github.io/open-free-tools/ru/blog/how-to-convert-audio-to-midi/" />
+    <link rel="alternate" hreflang="de" href="https://john1912-7.github.io/open-free-tools/de/blog/how-to-convert-audio-to-midi/" />
+    <link rel="alternate" hreflang="es" href="https://john1912-7.github.io/open-free-tools/es/blog/how-to-convert-audio-to-midi/" />
+    <link rel="alternate" hreflang="hy" href="https://john1912-7.github.io/open-free-tools/hy/blog/how-to-convert-audio-to-midi/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="hy" />
+    <meta property="og:title" content="Ինչպես փոխարկել audio-ն MIDI-ի - քայլ առ քայլ" />
+    <meta property="og:description" content="Քայլ առ քայլ ուղեցույց՝ պատրաստել սեփական audio-ն, փոխարկել MIDI-ի, սպասել backend processing-ին եւ ստուգել արդյունքը:" />
+    <meta property="og:url" content="https://john1912-7.github.io/open-free-tools/hy/blog/how-to-convert-audio-to-midi/" />
+    <meta property="og:site_name" content="Open Free Tools" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Ինչպես փոխարկել audio-ն MIDI-ի - քայլ առ քայլ" />
+    <meta name="twitter:description" content="Քայլ առ քայլ ուղեցույց՝ պատրաստել սեփական audio-ն, փոխարկել MIDI-ի, սպասել backend processing-ին եւ ստուգել արդյունքը:" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EFDCRJY776"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag("js", new Date());
+      gtag("config", "G-EFDCRJY776");
+    </script>
+    <script>
+      (() => {
+        const saved = localStorage.getItem("oft-theme");
+        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.dataset.theme = saved || (prefersDark ? "dark" : "light");
+      })();
+    </script>
+    <link rel="stylesheet" href="../../../assets/styles.css" />
+    <script type="application/ld+json">[{"@context":"https://schema.org","@type":"Organization","name":"Open Free Tools","url":"https://john1912-7.github.io/open-free-tools","sameAs":["https://github.com/john1912-7"]},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Open Free Tools","item":"https://john1912-7.github.io/open-free-tools/"},{"@type":"ListItem","position":2,"name":"Ինչպես փոխարկել audio-ն MIDI-ի","item":"https://john1912-7.github.io/open-free-tools/hy/blog/how-to-convert-audio-to-midi/"}]},{"@context":"https://schema.org","@type":"Article","headline":"Ինչպես փոխարկել audio-ն MIDI-ի","description":"Քայլ առ քայլ ուղեցույց՝ պատրաստել սեփական audio-ն, փոխարկել MIDI-ի, սպասել backend processing-ին եւ ստուգել արդյունքը:","url":"https://john1912-7.github.io/open-free-tools/hy/blog/how-to-convert-audio-to-midi/","author":{"@type":"Organization","name":"Open Free Tools"},"publisher":{"@type":"Organization","name":"Open Free Tools"},"inLanguage":"hy"}]</script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../../../hy/">
+        <span>OFT</span>
+        <strong>Open Free Tools</strong>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="../../../hy/tools/">Գործիքներ</a>
+        <a href="../../../hy/about/">Նախագիծ</a>
+        <a href="../../../hy/blog/">Բլոգ</a>
+        <a href="../../../hy/donate/">Նվիրաբերել</a>
+        <a href="../../../hy/contribute/">Մասնակցել</a>
+        <a href="../../../hy/legal/">Իրավական</a>
+        <a href="../../../hy/contact/">Կապ</a>
+      </nav>
+      <div class="header-controls">
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle dark or light theme">
+          <span data-theme-icon>◐</span>
+        </button>
+        <details class="language-menu">
+          <summary aria-label="Change language">
+            <span class="flag">🇦🇲</span>
+            <span class="chevron" aria-hidden="true">▾</span>
+          </summary>
+          <div class="language-list" aria-label="Languages">
+          <a href="../../../en/blog/how-to-convert-audio-to-midi/"><span class="flag">🇬🇧</span><span>English</span></a>
+          <a href="../../../ru/blog/how-to-convert-audio-to-midi/"><span class="flag">🇷🇺</span><span>Русский</span></a>
+          <a href="../../../de/blog/how-to-convert-audio-to-midi/"><span class="flag">🇩🇪</span><span>Deutsch</span></a>
+          <a href="../../../es/blog/how-to-convert-audio-to-midi/"><span class="flag">🇪🇸</span><span>Español</span></a>
+          <a href="../../../hy/blog/how-to-convert-audio-to-midi/" aria-current="true"><span class="flag">🇦🇲</span><span>Հայերեն</span></a>
+          </div>
+        </details>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Free · Open Source · Browser First</p>
+          <h1>Ինչպես փոխարկել audio-ն MIDI-ի</h1>
+          <p>Այս workflow-ը ցույց է տալիս՝ ինչպես բեռնել audio, ստանալ MIDI, ներբեռնել արդյունքը եւ բացել MIDI Piano Trainer-ում:</p>
+          <div class="hero-actions">
+            <a class="button primary" href="https://john1912-7.github.io/midi-piano-trainer/">Փորձել գործիքը</a>
+            <a class="button" href="https://github.com/john1912-7">Star GitHub-ում</a>
+          </div>
+        </div>
+        
+      </section>
+
+
+      <article class="article-body">
+        <section class="panel">
+          <h2>Պատրաստեք audio-ն</h2>
+          <p>Օգտագործեք ձեր սեփական ֆայլը, կտրեք երկար լռությունը եւ սկսեք կարճ մաքուր piano clip-ից:</p>
+        </section>
+        <section class="panel">
+          <h2>Սկսեք conversion-ը</h2>
+          <p>Բացեք converter-ը, բեռնեք ֆայլը եւ պահեք էջը բաց, մինչեւ queue եւ processing ավարտվեն:</p>
+        </section>
+        <section class="panel">
+          <h2>Ստուգեք MIDI արդյունքը</h2>
+          <p>Ներբեռնեք MIDI-ն եւ լսեք trainer-ում: Ստուգեք նոտաները, rhythm-ը, tempo-ն եւ բաց թողնված նոտաները:</p>
+        </section>
+
+        <section class="panel">
+          <h2>Քայլ առ քայլ workflow</h2>
+          <ol>
+            <li>Ընտրեք կարճ սեփական audio:</li>
+            <li>Բեռնեք converter-ում:</li>
+            <li>Սպասեք queued եւ processing states:</li>
+            <li>Ներբեռնեք generated MIDI:</li>
+            <li>Բացեք MIDI-ն trainer-ում եւ լսեք սխալները:</li>
+          </ol>
+        </section>
+
+        <section class="panel">
+          <h2>FAQ</h2>
+          <dl class="faq-list">
+            <dt>Անվճա՞ր է:</dt><dd>Այո: Core ֆունկցիաները մնում են անվճար եւ open-source:</dd>
+            <dt>Պե՞տք է account:</dt><dd>Ոչ: Հիմնական workflow-ը աշխատում է browser-ում:</dd>
+            <dt>Ինչու՞ արդյունքը perfect չէ:</dt><dd>Audio-to-MIDI-ն կախված է recording-ից, model-ից եւ preprocessing-ից: Սա beta է:</dd>
+          </dl>
+        </section>
+      </article>
+
+      <section class="grid two">
+        <article class="card">
+          <h2>Փորձել գործիքը</h2>
+          <p>Բացեք գործիքը եւ առաջինը փորձեք կարճ մաքուր audio:</p>
+          <a href="https://john1912-7.github.io/midi-piano-trainer/hy/audio-to-midi/">Բացել գործիքը</a>
+        </article>
+        <article class="card">
+          <h2>Կապված ուղեցույց</h2>
+          <p>Կարդացեք հաջորդ ուղեցույցը՝ կապված workflow-ը հասկանալու համար:</p>
+          <a href="https://john1912-7.github.io/open-free-tools/hy/blog/free-midi-piano-trainer/">Կարդալ հաջորդը</a>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <p>Open Free Tools is an independent open-source project. No affiliation with paid services mentioned in comparisons.</p>
+      <p><a href="../../../hy/privacy/">Privacy</a> · <a href="../../../hy/legal/">Legal</a> · <a href="../../../hy/contact/">Contact</a></p>
+    </footer>
+    <script>
+      (() => {
+        const button = document.querySelector("[data-theme-toggle]");
+        const icon = document.querySelector("[data-theme-icon]");
+        const setIcon = () => {
+          const theme = document.documentElement.dataset.theme || "light";
+          icon.textContent = theme === "dark" ? "☀" : "☾";
+          button.setAttribute("aria-label", theme === "dark" ? "Switch to light theme" : "Switch to dark theme");
+        };
+
+        setIcon();
+        button.addEventListener("click", () => {
+          const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+          document.documentElement.dataset.theme = next;
+          localStorage.setItem("oft-theme", next);
+          setIcon();
+        });
+      })();
+    </script>
+  </body>
+</html>

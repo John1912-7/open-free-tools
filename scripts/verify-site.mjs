@@ -11,6 +11,9 @@ const routes = [
   "tools/audio-to-midi",
   "tools/open-transcription-studio",
   "blog",
+  "blog/free-midi-piano-trainer",
+  "blog/free-audio-to-midi-converter",
+  "blog/how-to-convert-audio-to-midi",
   "donate",
   "contribute",
   "privacy",
@@ -24,6 +27,7 @@ const pages = [
 ];
 
 const failures = [];
+const metadataByLanguage = new Map();
 
 for (const page of pages) {
   const file = page ? join(page, "index.html") : "index.html";
@@ -38,6 +42,16 @@ for (const page of pages) {
     continue;
   }
 
+  const title = html.match(/<title>([^<]+)<\/title>/)?.[1]?.trim() || "";
+  const description = html.match(/<meta name="description" content="([^"]+)"/)?.[1]?.trim() || "";
+  const h1 = html.match(/<h1>([^<]+)<\/h1>/)?.[1]?.trim() || "";
+  const bodyText = html
+    .replace(/<script[\s\S]*?<\/script>/g, "")
+    .replace(/<style[\s\S]*?<\/style>/g, "")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
   for (const pattern of [
     /<title>[^<]+<\/title>/,
     /<meta name="description" content="[^"]+"/,
@@ -49,6 +63,25 @@ for (const page of pages) {
     /<script type="application\/ld\+json">/,
   ]) {
     if (!pattern.test(html)) failures.push(`${file}: failed ${pattern}`);
+  }
+
+  if (title.length < 20 || title.length > 75) failures.push(`${file}: title length ${title.length}`);
+  if (description.length < 70 || description.length > 180) failures.push(`${file}: description length ${description.length}`);
+  if (h1.length < 8) failures.push(`${file}: h1 too short`);
+  if (bodyText.length < 700) failures.push(`${file}: thin visible text ${bodyText.length}`);
+  if (html.includes("???")) failures.push(`${file}: contains question-mark placeholder`);
+
+  const languageKey = hasLanguagePrefix ? parts[0] : "x-default";
+  if (languageKey !== "x-default") {
+    if (!metadataByLanguage.has(languageKey)) {
+      metadataByLanguage.set(languageKey, { title: new Map(), description: new Map(), h1: new Map() });
+    }
+    const bucket = metadataByLanguage.get(languageKey);
+    for (const [key, value] of [["title", title], ["description", description], ["h1", h1]]) {
+      const seen = bucket[key].get(value);
+      if (seen) failures.push(`${file}: duplicate ${key} with ${seen}`);
+      bucket[key].set(value, file);
+    }
   }
 
   for (const bad of ["ru-RU", "de-DE", "es-ES", "hy-AM"]) {
@@ -69,9 +102,23 @@ for (const page of pages) {
 }
 
 const sitemap = await readFile("sitemap.xml", "utf8");
+const robots = await readFile("robots.txt", "utf8").catch(() => "");
+
+if (!robots.includes("User-agent: *")) failures.push("robots.txt: missing user agent");
+if (!robots.includes("Allow: /")) failures.push("robots.txt: missing allow rule");
+if (!robots.includes(`Sitemap: ${baseUrl}/sitemap.xml`)) failures.push("robots.txt: missing sitemap URL");
+
 for (const lang of languages) {
   if (!sitemap.includes(`/open-free-tools/${lang}/`)) {
     failures.push(`sitemap.xml: missing ${lang}`);
+  }
+}
+
+for (const page of pages) {
+  const normalizedPage = page.replaceAll("\\", "/");
+  const expected = `${baseUrl}/${normalizedPage ? `${normalizedPage}/` : ""}`;
+  if (!sitemap.includes(`<loc>${expected}</loc>`)) {
+    failures.push(`sitemap.xml: missing ${expected}`);
   }
 }
 
