@@ -2,6 +2,7 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
 const languages = ["en", "ru", "de", "es", "hy"];
+const baseUrl = "https://john1912-7.github.io/open-free-tools";
 const routes = [
   "",
   "tools",
@@ -27,6 +28,10 @@ const failures = [];
 for (const page of pages) {
   const file = page ? join(page, "index.html") : "index.html";
   const html = await readFile(file, "utf8").catch(() => "");
+  const normalizedPage = page.replaceAll("\\", "/");
+  const parts = normalizedPage.split("/").filter(Boolean);
+  const hasLanguagePrefix = languages.includes(parts[0]);
+  const route = hasLanguagePrefix ? parts.slice(1).join("/") : normalizedPage;
 
   if (!html) {
     failures.push(`${file}: missing`);
@@ -48,6 +53,18 @@ for (const page of pages) {
 
   for (const bad of ["ru-RU", "de-DE", "es-ES", "hy-AM"]) {
     if (html.includes(`hreflang="${bad}"`)) failures.push(`${file}: country hreflang ${bad}`);
+  }
+
+  const xDefaultUrl = `${baseUrl}/${route ? `${route}/` : ""}`;
+  if (!html.includes(`hreflang="x-default" href="${xDefaultUrl}"`)) {
+    failures.push(`${file}: x-default does not preserve route ${route || "/"}`);
+  }
+
+  for (const lang of languages) {
+    const localizedUrl = `${baseUrl}/${lang}/${route ? `${route}/` : ""}`;
+    if (!html.includes(`hreflang="${lang}" href="${localizedUrl}"`)) {
+      failures.push(`${file}: ${lang} hreflang does not preserve route ${route || "/"}`);
+    }
   }
 }
 
