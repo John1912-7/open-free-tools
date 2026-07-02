@@ -28,6 +28,18 @@ const pages = [
 
 const failures = [];
 const metadataByLanguage = new Map();
+const adAllowedRoutes = new Set([
+  "",
+  "tools",
+  "tools/midi-piano-trainer",
+  "tools/audio-to-midi",
+  "tools/open-transcription-studio",
+  "blog",
+  "blog/free-midi-piano-trainer",
+  "blog/free-audio-to-midi-converter",
+  "blog/how-to-convert-audio-to-midi",
+]);
+const trustRoutes = new Set(["about", "privacy", "legal", "contact"]);
 
 for (const page of pages) {
   const file = page ? join(page, "index.html") : "index.html";
@@ -70,6 +82,28 @@ for (const page of pages) {
   if (h1.length < 8) failures.push(`${file}: h1 too short`);
   if (bodyText.length < 700) failures.push(`${file}: thin visible text ${bodyText.length}`);
   if (html.includes("???")) failures.push(`${file}: contains question-mark placeholder`);
+
+  const hasAdSlot = html.includes('class="ad-slot"');
+  if (adAllowedRoutes.has(route) && !hasAdSlot) {
+    failures.push(`${file}: missing content-page ad placeholder`);
+  }
+  if (!adAllowedRoutes.has(route) && hasAdSlot) {
+    failures.push(`${file}: ad placeholder on non-content route`);
+  }
+  if (trustRoutes.has(route) && !html.includes('class="trust-layout"')) {
+    failures.push(`${file}: missing trust layout`);
+  }
+  if (hasAdSlot && route.startsWith("tools/")) {
+    const adIndex = html.indexOf('class="ad-slot"');
+    const actionsIndex = html.indexOf('class="tool-actions"');
+    const noteIndex = html.indexOf('class="panel ad-note"');
+    if (actionsIndex === -1 || adIndex < actionsIndex) {
+      failures.push(`${file}: ad placeholder appears before tool actions`);
+    }
+    if (noteIndex === -1 || adIndex < noteIndex) {
+      failures.push(`${file}: ad placeholder appears before AdSense safety note`);
+    }
+  }
 
   const languageKey = hasLanguagePrefix ? parts[0] : "x-default";
   if (languageKey !== "x-default") {

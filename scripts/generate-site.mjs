@@ -238,9 +238,9 @@ const languages = {
         intro: "Проект предпочитает обработку в браузере и ясные границы данных. Backend-функции должны объяснять, когда файл покидает устройство.",
       },
       legal: {
-        title: "Legal Disclaimer - Open Free Tools",
+        title: "Юридическое предупреждение - Open Free Tools",
         description: "Open Free Tools является независимым проектом и не связан с платными сервисами, которые упоминаются в сравнениях.",
-        h1: "Legal Disclaimer",
+        h1: "Юридическое предупреждение",
         intro: "Проект делает независимые альтернативы и не копирует бренды, логотипы, приватные API, ассеты или интерфейсы платных сервисов.",
       },
       contact: {
@@ -836,7 +836,9 @@ function renderRouteBody(route, data, isToolPage) {
       <section class="panel">
         <h2>${escapeHtml(showcase.earlyTitle)}</h2>
         <p>${escapeHtml(showcase.earlyText)}</p>
-      </section>`;
+      </section>
+
+      ${renderAdSlot(data, "home")}`;
   }
 
   if (route === "tools") {
@@ -849,10 +851,13 @@ function renderRouteBody(route, data, isToolPage) {
         ${toolCard("MIDI Piano Trainer", data.pages.midi.intro, "/tools/midi-piano-trainer/", showcase.statusStable, showcase.openPage)}
         ${toolCard("Audio to MIDI Converter", data.pages.audio.intro, "/tools/audio-to-midi/", showcase.statusBeta, showcase.openPage)}
         ${toolCard("Open Transcription Studio", data.pages.transcription.intro, "/tools/open-transcription-studio/", showcase.statusPlanned, showcase.openPage)}
-      </section>`;
+      </section>
+
+      ${renderAdSlot(data, "catalog")}`;
   }
 
   if (route === "about") {
+    const trust = trustPageCopy(data.locale).about;
     return `
       <section class="grid two">
         <article class="panel">
@@ -872,6 +877,12 @@ function renderRouteBody(route, data, isToolPage) {
           <p>${escapeHtml(showcase.communityText)}</p>
         </article>
       </section>
+      <section class="trust-layout">
+        ${trust.sections.map((section) => `<article class="panel">
+          <h2>${escapeHtml(section.title)}</h2>
+          <p>${escapeHtml(section.text)}</p>
+        </article>`).join("\n        ")}
+      </section>
       <section class="roadmap">
         <h2>${escapeHtml(showcase.roadmapTitle)}</h2>
         <ol>
@@ -889,7 +900,9 @@ function renderRouteBody(route, data, isToolPage) {
       </section>
       <section class="grid two">
         ${cards.map((card) => articleCard(card.title, card.text, `${site.baseUrl}/${data.locale}/${routeMap[card.route]}/`, card.cta)).join("\n        ")}
-      </section>`;
+      </section>
+
+      ${renderAdSlot(data, "blog")}`;
   }
 
   if (seoGuideRoutes.includes(route)) {
@@ -932,7 +945,13 @@ function renderRouteBody(route, data, isToolPage) {
       <section class="panel ad-note">
         <h2>${escapeHtml(showcase.adsTitle)}</h2>
         <p>${escapeHtml(showcase.adsText)}</p>
-      </section>`;
+      </section>
+
+      ${renderAdSlot(data, "toolLanding")}`;
+  }
+
+  if (["privacy", "legal", "contact"].includes(route)) {
+    return renderTrustPage(route, data);
   }
 
   return `
@@ -1317,7 +1336,221 @@ function renderSeoGuide(route, data) {
           <p>${escapeHtml(guide.relatedText)}</p>
           <a href="${relatedHref}">${escapeHtml(guide.relatedCta)}</a>
         </article>
+      </section>
+
+      ${renderAdSlot(data, "guide")}`;
+}
+
+function renderTrustPage(route, data) {
+  const page = trustPageCopy(data.locale)[route] || trustPageCopy("en")[route];
+  return `
+      <section class="trust-layout">
+        ${page.sections.map((section) => `<article class="panel">
+          <h2>${escapeHtml(section.title)}</h2>
+          <p>${escapeHtml(section.text)}</p>
+        </article>`).join("\n        ")}
       </section>`;
+}
+
+function renderAdSlot(data, placement) {
+  const copy = adSlotCopy(data.locale);
+  return `<aside class="ad-slot" data-ad-placement="${placement}" aria-label="${escapeHtml(copy.aria)}">
+        <span>${escapeHtml(copy.label)}</span>
+        <p>${escapeHtml(copy.text)}</p>
+      </aside>`;
+}
+
+function adSlotCopy(locale) {
+  const copy = {
+    en: {
+      aria: "Reserved advertising space",
+      label: "Advertising space",
+      text: "Reserved for future respectful ads or project sponsorship. This slot is separated from upload, play, convert, download, and editor controls.",
+    },
+    ru: {
+      aria: "Зарезервированное рекламное место",
+      label: "Рекламное место",
+      text: "Место для будущей аккуратной рекламы или спонсорского блока. Оно отделено от Upload, Play, Convert, Download и editor controls.",
+    },
+    de: {
+      aria: "Reservierter Anzeigenbereich",
+      label: "Anzeigenbereich",
+      text: "Reserviert fuer spaetere respektvolle Anzeigen oder Sponsoring. Der Bereich ist von Upload-, Play-, Convert-, Download- und Editor-Controls getrennt.",
+    },
+    es: {
+      aria: "Espacio publicitario reservado",
+      label: "Espacio publicitario",
+      text: "Reservado para futuros anuncios respetuosos o patrocinio. Esta separado de controles Upload, Play, Convert, Download y editor.",
+    },
+    hy: {
+      aria: "Պահված գովազդային տարածք",
+      label: "Գովազդային տարածք",
+      text: "Պահված է ապագա հարգալից գովազդի կամ sponsor block-ի համար: Այն առանձնացված է Upload, Play, Convert, Download եւ editor controls-ից:",
+    },
+  };
+  return copy[locale] || copy.en;
+}
+
+function trustPageCopy(locale) {
+  const copy = {
+    en: {
+      about: {
+        sections: [
+          { title: "Mission", text: "Open Free Tools exists to make useful browser-first tools available without subscription pressure. The goal is not to clone paid products, but to build independent open-source workflows that users can inspect, fork, and self-host." },
+          { title: "Monetization promise", text: "Core functionality should remain free. Funding can come from respectful ads on content pages, donations, sponsorships, and promotion of our own projects, not from hiding the essential workflow behind a paywall." },
+        ],
+      },
+      privacy: {
+        sections: [
+          { title: "Data boundaries", text: "Open Free Tools prefers browser-side processing whenever possible. When a feature needs backend processing, the page should explain that the uploaded file may leave the device and should show the relevant limits before conversion starts." },
+          { title: "Analytics and ads", text: "The site may use Google Analytics and, later, Google AdSense. Analytics helps understand public page usage. Future ads should appear on content or landing pages, not beside upload, play, convert, download, or editor controls." },
+          { title: "Uploaded files", text: "Users should upload only files they are allowed to use. Experimental backend tools should process files only for the requested conversion or benchmark workflow and should avoid unnecessary retention." },
+          { title: "User control", text: "The project should keep privacy language clear, update this page when backend behavior changes, and provide a contact route for privacy questions or removal requests." },
+        ],
+      },
+      legal: {
+        sections: [
+          { title: "Independent project", text: "Open Free Tools is independent and is not affiliated with paid tools, brands, or services mentioned in comparisons. Names of third-party services may be used only for fair, descriptive comparison." },
+          { title: "No copying protected services", text: "The project must not copy logos, brand identity, private APIs, paid-service UI, copyrighted assets, demo files, DRM behavior, or subscription bypasses." },
+          { title: "User responsibility", text: "Users are responsible for uploading files they own or have permission to process. The tools are provided for lawful personal, educational, creative, and open-source workflows." },
+          { title: "Experimental tools", text: "Some tools are beta or roadmap-stage. Results may be inaccurate, slow, or incomplete. The site should describe limits honestly instead of promising paid-service quality before it exists." },
+        ],
+      },
+      contact: {
+        sections: [
+          { title: "Product feedback", text: "Use GitHub issues for bugs, bad conversion examples, feature requests, and first-user feedback. Real examples are especially useful for improving audio-to-MIDI quality." },
+          { title: "Legal and privacy requests", text: "For legal, privacy, affiliation, or content concerns, use the public contact route shown here until a dedicated email is added before AdSense application." },
+          { title: "Launch and community feedback", text: "The project welcomes feedback-first posts, community testing, and honest suggestions. We should disclose authorship clearly and avoid spam or automated promotion." },
+        ],
+      },
+    },
+    ru: {
+      about: {
+        sections: [
+          { title: "Миссия", text: "Open Free Tools существует, чтобы полезные browser-first инструменты были доступны без давления подписок. Цель не копировать платные продукты, а строить независимые open-source workflow, которые можно проверить, изменить и self-host." },
+          { title: "Принцип монетизации", text: "Core-функции должны оставаться бесплатными. Поддержка может идти через аккуратную рекламу на контентных страницах, донаты, sponsors и продвижение своих проектов, а не через paywall для основного сценария." },
+        ],
+      },
+      privacy: {
+        sections: [
+          { title: "Границы данных", text: "Open Free Tools предпочитает обработку в браузере, когда это возможно. Если функции нужен backend, страница должна объяснять, что файл может покинуть устройство, и показывать лимиты до начала обработки." },
+          { title: "Analytics и реклама", text: "Сайт может использовать Google Analytics и позже Google AdSense. Аналитика помогает понимать использование публичных страниц. Будущая реклама должна быть на контентных или landing страницах, а не рядом с Upload, Play, Convert, Download или editor controls." },
+          { title: "Загруженные файлы", text: "Пользователь должен загружать только файлы, которые ему разрешено использовать. Экспериментальные backend-инструменты должны обрабатывать файлы только для выбранной конвертации или benchmark workflow и избегать лишнего хранения." },
+          { title: "Контроль пользователя", text: "Проект должен держать privacy-текст понятным, обновлять эту страницу при изменениях backend-поведения и давать маршрут связи для privacy-вопросов или запросов удаления." },
+        ],
+      },
+      legal: {
+        sections: [
+          { title: "Независимый проект", text: "Open Free Tools независим и не связан с платными инструментами, брендами или сервисами, которые могут упоминаться в сравнениях. Названия сторонних сервисов допустимы только для честного описательного сравнения." },
+          { title: "Без копирования защищенных сервисов", text: "Проект не должен копировать логотипы, бренд-айдентику, private API, UI платных сервисов, copyrighted assets, demo files, DRM behavior или обход подписок." },
+          { title: "Ответственность пользователя", text: "Пользователь отвечает за то, что загружает файлы, которыми владеет или которые имеет право обрабатывать. Инструменты предназначены для законных личных, учебных, creative и open-source workflow." },
+          { title: "Экспериментальные инструменты", text: "Некоторые инструменты находятся в beta или roadmap-stage. Результаты могут быть неточными, медленными или неполными. Сайт должен честно описывать лимиты, а не обещать качество платных сервисов заранее." },
+        ],
+      },
+      contact: {
+        sections: [
+          { title: "Фидбек по продукту", text: "Используйте GitHub issues для багов, плохих примеров конвертации, feature requests и фидбека первых пользователей. Реальные примеры особенно полезны для улучшения audio-to-MIDI качества." },
+          { title: "Юридические и privacy запросы", text: "Для legal, privacy, affiliation или content concerns используйте публичный contact route на этой странице, пока перед AdSense-заявкой не будет добавлен отдельный email." },
+          { title: "Launch и community feedback", text: "Проект открыт к feedback-first постам, community testing и честным предложениям. Мы должны ясно раскрывать авторство и не использовать спам или автоматизированное продвижение." },
+        ],
+      },
+    },
+    de: {
+      about: {
+        sections: [
+          { title: "Mission", text: "Open Free Tools macht nuetzliche browser-first Tools ohne Abo-Druck verfuegbar. Ziel ist nicht, bezahlte Produkte zu kopieren, sondern unabhaengige Open-Source-Workflows zu bauen, die man pruefen, forken und self-hosten kann." },
+          { title: "Monetarisierungsversprechen", text: "Kernfunktionen sollen kostenlos bleiben. Finanzierung kann ueber respektvolle Anzeigen auf Content-Seiten, Spenden, Sponsoring und eigene Projektwerbung laufen, nicht ueber Paywalls fuer den Hauptworkflow." },
+        ],
+      },
+      privacy: {
+        sections: [
+          { title: "Datengrenzen", text: "Open Free Tools bevorzugt Verarbeitung im Browser. Wenn eine Funktion Backend-Verarbeitung braucht, soll die Seite erklaeren, dass eine Datei das Geraet verlassen kann, und Limits vor dem Start zeigen." },
+          { title: "Analytics und Anzeigen", text: "Die Website kann Google Analytics und spaeter Google AdSense nutzen. Analytics hilft, die Nutzung oeffentlicher Seiten zu verstehen. Anzeigen gehoeren auf Content- oder Landing-Seiten, nicht neben Upload-, Play-, Convert-, Download- oder Editor-Controls." },
+          { title: "Hochgeladene Dateien", text: "Nutzer sollen nur Dateien hochladen, die sie nutzen duerfen. Experimentelle Backend-Tools sollen Dateien nur fuer den gewaehlten Conversion- oder Benchmark-Workflow verarbeiten und unnoetige Speicherung vermeiden." },
+          { title: "Nutzerkontrolle", text: "Das Projekt soll Datenschutztexte klar halten, diese Seite bei Backend-Aenderungen aktualisieren und einen Kontaktweg fuer Datenschutzfragen oder Loeschanfragen anbieten." },
+        ],
+      },
+      legal: {
+        sections: [
+          { title: "Unabhaengiges Projekt", text: "Open Free Tools ist unabhaengig und nicht mit kostenpflichtigen Tools, Marken oder Diensten verbunden, die in Vergleichen erwaehnt werden. Namen Dritter duerfen nur fuer faire beschreibende Vergleiche genutzt werden." },
+          { title: "Kein Kopieren geschuetzter Dienste", text: "Das Projekt darf keine Logos, Markenidentitaet, private APIs, UI bezahlter Dienste, urheberrechtlich geschuetzte Assets, Demo-Dateien, DRM-Verhalten oder Abo-Umgehungen kopieren." },
+          { title: "Verantwortung der Nutzer", text: "Nutzer sind verantwortlich dafuer, nur Dateien hochzuladen, die sie besitzen oder verarbeiten duerfen. Die Tools sind fuer legale persoenliche, lernbezogene, kreative und Open-Source-Workflows gedacht." },
+          { title: "Experimentelle Tools", text: "Einige Tools sind beta oder roadmap-stage. Ergebnisse koennen ungenau, langsam oder unvollstaendig sein. Die Website soll Grenzen ehrlich beschreiben." },
+        ],
+      },
+      contact: {
+        sections: [
+          { title: "Produktfeedback", text: "Nutze GitHub Issues fuer Bugs, schlechte Conversion-Beispiele, Feature Requests und Feedback erster Nutzer. Reale Beispiele helfen besonders, Audio-to-MIDI zu verbessern." },
+          { title: "Rechtliche und Datenschutzanfragen", text: "Fuer Legal-, Privacy-, Affiliation- oder Content-Themen nutze den oeffentlichen Kontaktweg auf dieser Seite, bis vor der AdSense-Bewerbung eine dedizierte E-Mail ergaenzt wird." },
+          { title: "Launch- und Community-Feedback", text: "Das Projekt ist offen fuer feedback-first Posts, Community Testing und ehrliche Vorschlaege. Autorschaft soll klar offengelegt werden; Spam und automatisierte Promotion vermeiden wir." },
+        ],
+      },
+    },
+    es: {
+      about: {
+        sections: [
+          { title: "Mision", text: "Open Free Tools existe para ofrecer herramientas utiles orientadas al navegador sin presion de suscripcion. La meta no es copiar productos de pago, sino crear workflows open-source independientes que se puedan revisar, modificar y self-host." },
+          { title: "Promesa de monetizacion", text: "Las funciones principales deben seguir gratis. La financiacion puede venir de anuncios respetuosos en paginas de contenido, donaciones, sponsors y promocion de proyectos propios, no de bloquear el flujo principal con un paywall." },
+        ],
+      },
+      privacy: {
+        sections: [
+          { title: "Limites de datos", text: "Open Free Tools prefiere procesamiento en el navegador siempre que sea posible. Si una funcion necesita backend, la pagina debe explicar que el archivo puede salir del dispositivo y mostrar limites antes de empezar." },
+          { title: "Analytics y anuncios", text: "El sitio puede usar Google Analytics y mas adelante Google AdSense. Analytics ayuda a entender el uso de paginas publicas. Los anuncios futuros deben estar en contenido o landing pages, no junto a Upload, Play, Convert, Download ni controles de editor." },
+          { title: "Archivos subidos", text: "Los usuarios deben subir solo archivos que tengan derecho a usar. Las herramientas backend experimentales deben procesar archivos solo para la conversion o benchmark solicitado y evitar retencion innecesaria." },
+          { title: "Control del usuario", text: "El proyecto debe mantener claro el texto de privacidad, actualizar esta pagina cuando cambie el comportamiento del backend y ofrecer una ruta de contacto para privacidad o eliminacion." },
+        ],
+      },
+      legal: {
+        sections: [
+          { title: "Proyecto independiente", text: "Open Free Tools es independiente y no esta afiliado con herramientas, marcas o servicios de pago mencionados en comparaciones. Los nombres de terceros solo deben usarse para comparacion justa y descriptiva." },
+          { title: "No copiar servicios protegidos", text: "El proyecto no debe copiar logos, identidad de marca, APIs privadas, UI de servicios de pago, assets con copyright, demo files, comportamiento DRM ni bypasses de suscripcion." },
+          { title: "Responsabilidad del usuario", text: "Los usuarios son responsables de subir archivos propios o con permiso de procesamiento. Las herramientas son para workflows legales personales, educativos, creativos y open-source." },
+          { title: "Herramientas experimentales", text: "Algunas herramientas estan en beta o roadmap-stage. Los resultados pueden ser inexactos, lentos o incompletos. El sitio debe describir limites con honestidad." },
+        ],
+      },
+      contact: {
+        sections: [
+          { title: "Feedback de producto", text: "Usa GitHub issues para bugs, malos ejemplos de conversion, feature requests y feedback inicial. Los ejemplos reales ayudan especialmente a mejorar audio-to-MIDI." },
+          { title: "Solicitudes legales y de privacidad", text: "Para temas legales, privacidad, afiliacion o contenido, usa la ruta publica de contacto de esta pagina hasta que se agregue un email dedicado antes de aplicar a AdSense." },
+          { title: "Launch y feedback de comunidad", text: "El proyecto acepta posts feedback-first, community testing y sugerencias honestas. Siempre debemos revelar autoria y evitar spam o promocion automatizada." },
+        ],
+      },
+    },
+    hy: {
+      about: {
+        sections: [
+          { title: "Առաքելություն", text: "Open Free Tools-ը ստեղծում է օգտակար browser-first գործիքներ առանց subscription ճնշման: Նպատակը paid products-ը կրկնօրինակելը չէ, այլ անկախ open-source workflows կառուցելը, որոնք կարելի է ստուգել, fork անել եւ self-host անել:" },
+          { title: "Monetization խոստում", text: "Core ֆունկցիաները պետք է մնան անվճար: Ֆինանսավորումը կարող է գալ հարգալից գովազդից content էջերում, donations-ից, sponsorship-ից եւ սեփական projects-ի առաջխաղացումից, ոչ թե հիմնական workflow-ի paywall-ից:" },
+        ],
+      },
+      privacy: {
+        sections: [
+          { title: "Տվյալների սահմաններ", text: "Open Free Tools-ը նախընտրում է browser-side processing, երբ դա հնարավոր է: Եթե feature-ին պետք է backend, էջը պետք է բացատրի, որ ֆայլը կարող է դուրս գալ device-ից եւ ցույց տա limits մինչ processing-ը:" },
+          { title: "Analytics եւ գովազդ", text: "Կայքը կարող է օգտագործել Google Analytics եւ հետագայում Google AdSense: Analytics-ը օգնում է հասկանալ public pages-ի օգտագործումը: Գովազդը պետք է լինի content կամ landing pages-ում, ոչ թե Upload, Play, Convert, Download կամ editor controls-ի կողքին:" },
+          { title: "Բեռնված ֆայլեր", text: "Օգտատերը պետք է բեռնի միայն ֆայլեր, որոնք իրավունք ունի օգտագործել: Experimental backend tools-ը պետք է մշակեն ֆայլերը միայն ընտրված conversion կամ benchmark workflow-ի համար եւ խուսափեն ավելորդ retention-ից:" },
+          { title: "Օգտատիրոջ վերահսկում", text: "Նախագիծը պետք է պահի privacy text-ը պարզ, թարմացնի այս էջը backend behavior-ի փոփոխության դեպքում եւ տա contact route privacy հարցերի կամ deletion requests-ի համար:" },
+        ],
+      },
+      legal: {
+        sections: [
+          { title: "Անկախ նախագիծ", text: "Open Free Tools-ը անկախ նախագիծ է եւ կապված չէ paid tools-ի, brands-ի կամ services-ի հետ, որոնք կարող են նշվել comparisons-ում: Third-party names-ը կարելի է օգտագործել միայն fair descriptive comparison-ի համար:" },
+          { title: "Չկրկնօրինակել պաշտպանված services", text: "Նախագիծը չպետք է կրկնօրինակի logos, brand identity, private APIs, paid-service UI, copyrighted assets, demo files, DRM behavior կամ subscription bypasses:" },
+          { title: "Օգտատիրոջ պատասխանատվություն", text: "Օգտատերը պատասխանատու է բեռնել միայն իր սեփական կամ թույլատրված ֆայլերը: Գործիքները նախատեսված են lawful personal, educational, creative եւ open-source workflows-ի համար:" },
+          { title: "Experimental tools", text: "Որոշ գործիքներ beta կամ roadmap-stage են: Արդյունքները կարող են լինել անճիշտ, դանդաղ կամ ոչ ամբողջական: Կայքը պետք է ազնիվ նկարագրի limits-ը:" },
+        ],
+      },
+      contact: {
+        sections: [
+          { title: "Product feedback", text: "Օգտագործեք GitHub issues bugs-ի, վատ conversion examples-ի, feature requests-ի եւ first-user feedback-ի համար: Իրական examples-ը հատկապես օգտակար են audio-to-MIDI quality-ն բարելավելու համար:" },
+          { title: "Legal եւ privacy requests", text: "Legal, privacy, affiliation կամ content concerns-ի համար օգտագործեք այս էջի public contact route-ը, մինչեւ AdSense application-ից առաջ dedicated email ավելացվի:" },
+          { title: "Launch եւ community feedback", text: "Նախագիծը բաց է feedback-first posts-ի, community testing-ի եւ ազնիվ suggestions-ի համար: Պետք է պարզ բացահայտել authorship-ը եւ խուսափել spam-ից կամ automated promotion-ից:" },
+        ],
+      },
+    },
+  };
+
+  return copy[locale] || copy.en;
 }
 
 function seoGuideCopy(locale) {
@@ -2076,6 +2309,12 @@ p { color: var(--muted); line-height: 1.65; }
   color: var(--muted);
   line-height: 1.65;
 }
+.trust-layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin: 20px 0;
+}
 .project-overview {
   display: grid;
   grid-template-columns: 1.2fr 1fr 1fr;
@@ -2101,6 +2340,31 @@ p { color: var(--muted); line-height: 1.65; }
 }
 .ad-note { background: #fbfdfc; }
 :root[data-theme="dark"] .ad-note { background: #13201c; }
+.ad-slot {
+  margin: 34px 0 6px;
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  padding: 22px;
+  background: var(--surface-2);
+  text-align: center;
+}
+.ad-slot span {
+  display: inline-flex;
+  margin-bottom: 8px;
+  border-radius: 999px;
+  padding: 5px 9px;
+  background: var(--soft);
+  color: var(--accent-dark);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+}
+.ad-slot p {
+  max-width: 680px;
+  margin: 0 auto;
+  color: var(--muted);
+}
 footer {
   max-width: 1180px;
   margin: 30px auto 0;
@@ -2112,7 +2376,7 @@ footer p { margin: 6px 0; font-size: 14px; }
   .site-header { grid-template-columns: 1fr; }
   .header-controls { justify-self: start; }
   .language-list { right: auto; left: 0; }
-  .hero-split, .grid.three, .grid.two, .showcase-band, .project-overview { grid-template-columns: 1fr; }
+  .hero-split, .grid.three, .grid.two, .showcase-band, .project-overview, .trust-layout { grid-template-columns: 1fr; }
   .hero { padding-top: 28px; }
   .studio-hero { min-height: 320px; }
 }
