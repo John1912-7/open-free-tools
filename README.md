@@ -59,6 +59,17 @@ PROJECT_PLAN_FOR_CODEX.md
 
 That file is the working memory for Codex and future contributors.
 
+Before promotion or launch work, read:
+
+```text
+PROMOTION_PLAN_FOR_CODEX.md
+marketing/content-calendar.md
+marketing/owned-channels.md
+launch-kits/midi-piano-trainer/README.md
+```
+
+Promotion starts with owned channels only: website/blog, GitHub, RSS/changelog, project social accounts, and an owned Discord server when configured.
+
 ## Storefront Mode
 
 The current site is intentionally a public storefront first: it explains the mission, shows live and unfinished tools, links to existing projects, and prepares the project for SEO, community feedback, and future AdSense approval before every tool is fully complete.

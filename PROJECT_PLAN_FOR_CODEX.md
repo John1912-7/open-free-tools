@@ -89,7 +89,8 @@ Channels:
 
 Anti-spam rules:
 
-- Do not automate posting.
+- Owned-channel automation is allowed only through official project access and safe platform-supported workflows.
+- Do not automate posting into external communities in V1.
 - Do not buy or coordinate fake votes.
 - Do not mass-post identical copy.
 - Always disclose that the project is ours.
@@ -102,6 +103,7 @@ Each tool should have:
 - one short pitch;
 - screenshots or a short demo video;
 - copy variants for Reddit/Discord, Show HN/Product Hunt, and short-form video captions;
+- owned-channel drafts for blog, GitHub, project social accounts, RSS/changelog, and the project Discord server;
 - a GitHub feedback issue;
 - a changelog or release note;
 - links to try, give feedback, star on GitHub, support, and share.
