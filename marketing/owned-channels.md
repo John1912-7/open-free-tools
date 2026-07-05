@@ -19,7 +19,7 @@ This file tracks channels that Open Free Tools controls or can safely automate t
 | YouTube Shorts | owned_manual | Open Free Tools project account | official YouTube upload/scheduler only | Create project channel first. No browser hacks. |
 | TikTok | owned_manual | Open Free Tools project account | official TikTok app/business tools only | Create project account first. No automation unless officially supported. |
 | Instagram Reels | owned_manual | Open Free Tools project account | official Meta/Instagram scheduler only | Create project account first. |
-| Discord project server | owned_manual | Open Free Tools server | owned server webhook/bot only | No unsolicited DMs. No posting to other servers. |
+| Discord project server | owned_manual | `study music` | owned server webhook/bot only | Server: `1521501520720298044`; current channel: `1521501520720298047`; no unsolicited DMs; no posting to other servers. |
 | Reddit communities | manual_or_later | separate project account later | no V1 auto-posting | Research only in V1. Follow community rules. |
 | Hacker News | manual_or_later | founder/project account later | no V1 auto-posting | Use Show HN only when stable. |
 | Product Hunt | manual_or_later | project account later | no V1 auto-posting | Use after screenshots, tagline, and demo are ready. |
@@ -34,3 +34,11 @@ This file tracks channels that Open Free Tools controls or can safely automate t
 - Use the same logo/avatar across owned channels.
 - Do not post aggressively from a brand-new account.
 - Keep credentials outside the repository.
+
+## Discord Link
+
+Current project Discord channel:
+
+https://discord.com/channels/1521501520720298044/1521501520720298047
+
+Use this channel for planning until a dedicated Open Free Tools channel structure is ready.
