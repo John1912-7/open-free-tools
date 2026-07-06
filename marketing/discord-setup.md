@@ -16,6 +16,14 @@ Created project channels:
 - `#support`: `1523372634937753743`
 - `#auto-posts-log`: `1523372640612516129`
 
+Initial setup messages:
+
+- `#welcome` pinned message: `1523766733410664524`
+- `#announcements` pinned message: `1523766743414210803`
+- `#audio-to-midi-feedback` pinned message: `1523766752373244079`
+- `#support` pinned message: `1523766760652931174`
+- `#auto-posts-log` setup message: `1523766769511305489`
+
 ## Goal
 
 Use Discord as the first owned community channel for Open Free Tools and MIDI Piano Trainer. The server should help collect real feedback, explain updates, and support future safe auto-posting through owned webhooks or a bot.
@@ -83,8 +91,8 @@ When the webhook exists, store only this public metadata in the repo:
 1. Confirm whether current channel `1521501520720298047` should be renamed or kept.
 2. ~~Create minimal public channels: `welcome`, `announcements`, `audio-to-midi-feedback`, `support`.~~
 3. ~~Create internal channel: `auto-posts-log`.~~
-4. Add short rules: no spam, no copyrighted uploads, no harassment, no fake engagement.
-5. Add pinned links:
+4. ~~Add short rules: no spam, no copyrighted uploads, no harassment, no fake engagement.~~
+5. ~~Add pinned links:~~
    - Open Free Tools hub;
    - MIDI Piano Trainer;
    - Audio-to-MIDI beta;
