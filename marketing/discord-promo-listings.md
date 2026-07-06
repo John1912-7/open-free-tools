@@ -35,12 +35,12 @@ Recommended tags:
 
 | Platform | URL | Status | Notes |
 | --- | --- | --- | --- |
-| DISBOARD | `https://disboard.org/` | in_progress | OAuth approved. Existing listing found. Updated form data, then Cloudflare verification appeared during save; needs manual check if it does not clear. |
+| DISBOARD | `https://disboard.org/ru/server/1521501520720298044` | needs_copy_update | Rechecked on 2026-07-06. Public listing exists, but the saved description/tags are still the old rough copy: `Hello. This is the open source project...`. The later English-first update did not save after Cloudflare. Needs edit/save with the listing copy above. |
 | Top.gg Servers | `https://top.gg/discord/servers/862052556993380352` | submitted | Submitted for verification on 2026-07-06. Top.gg says estimated waiting time is around 1-2 weeks. Language: English. Categories: Music, Music Production, Education, Community, Open Source, piano. |
-| Discord.me | `https://discord.me/server/add` | claim_needed | Logged in on 2026-07-06. After refresh, `Study music` appeared, but Discord.me says the server is already listed under another account and requires a Claim action. Claiming would move the listing to this account and remove other managers, so do only with explicit confirmation. Language should stay English. |
-| Discadia | `https://discadia.com/` | manual_only | Browser access is blocked by Codex browser security policy. Do not automate; user can submit manually using the listing copy above. |
-| Discords.com | `https://discords.com/u/dashboard` | waiting_manual_oauth | Logged in on 2026-07-06 and `Study music` is visible in the dashboard. Site requires adding the Discords.com bot before editing/listing. OAuth opened with `Study music` selected, but Discord's permission modal could not be safely scrolled without risking another Chrome hang. User/manual step needed: authorize DS.ME bot for `Study music`, then return to dashboard and edit listing. |
-| DiscordServers.com | `https://discordservers.com/` | pending | Requires account/login flow if still accepting server listings. |
+| Discord.me | `https://discord.me/server/add` | ready_manual_submit | Rechecked on 2026-07-06. Logged in as `yesiam27`; add-server form opens and `Study music` is visible in the owned servers list. Not submitted yet. Use English language and listing copy above. If a Claim prompt appears after selecting the server, do not claim without explicit user confirmation because it can move an existing listing from another account. |
+| Discadia | `https://discadia.com/` | manual_only | Rechecked on 2026-07-06. Browser access is still blocked by Codex browser security policy. Do not automate or work around; user can submit manually using the listing copy above. |
+| Discords.com | `https://discords.com/u/dashboard` | waiting_manual_bot | Rechecked on 2026-07-06. Dashboard opens, but it only shows the `Add Bot` step. The listing cannot be edited until the Discords.com bot is authorized for the server. Manual step needed: authorize the Discords.com bot for `Study music`, then return to dashboard and edit listing. |
+| DiscordServers.com | `https://discordservers.com/` | blocked_in_browser | Rechecked on 2026-07-06. Chrome reports `net::ERR_BLOCKED_BY_CLIENT` for the dashboard URL, so the site cannot be checked from this browser session. User can try manually in Chrome with blockers disabled or another browser. |
 
 ## Rules
 
