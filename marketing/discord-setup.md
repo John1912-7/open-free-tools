@@ -28,6 +28,8 @@ Initial setup messages:
 
 Use Discord as the first owned community channel for Open Free Tools and MIDI Piano Trainer. The server should help collect real feedback, explain updates, and support future safe auto-posting through owned webhooks or a bot.
 
+Public Discord channel copy should be English-first. Do not add Russian translations to pinned onboarding messages, channel topics, announcements, support prompts, or directory listing copy unless the user explicitly asks for a localized Discord channel later.
+
 ## Recommended Channel Structure
 
 Start simple. Too many empty channels make a new server feel dead.

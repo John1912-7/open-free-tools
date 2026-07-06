@@ -21,7 +21,7 @@ Open Free Tools is a free open-source music tools community. We are starting wit
 
 This server is for musicians, piano learners, MIDI users, developers, and open-source builders. Audio-to-MIDI is still beta, so feedback about wrong notes, timing, tempo, and bad conversions is especially welcome.
 
-EN/RU friendly. Core tools stay free.
+English-first. Core tools stay free.
 
 Recommended tags:
 
